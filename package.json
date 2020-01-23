@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "view-design": "^4.1.1",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
@@ -29,7 +31,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

@@ -20,3 +20,7 @@ yarn-error.log*
 *.sln
 *.sw?
 
+__pycache__/
+migrations/
+dataset/
+upload/

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.4.4",
     "view-design": "^4.1.1",
     "vue": "^2.6.10",
@@ -32,7 +33,14 @@
       "eslint:recommended"
     ],
     "rules": {
-      "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
+      "no-console": "off",
+      "no-unused-vars": "off",
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"

@@ -14,7 +14,6 @@
                                 ref="base" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,1)" 
-                                :on-success="uploadSuccess"
                                 :on-error="uploadError"
                                 accept=".csv"
                                 >
@@ -29,7 +28,6 @@
                                 ref="paient_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,2)" 
-                                :on-success="uploadSuccess"
                                 :on-error="uploadError"
                                 accept=".csv"
                                 >
@@ -44,7 +42,6 @@
                                 ref="year_report" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,3)" 
-                                :on-success="uploadSuccess"
                                 :on-error="uploadError"
                                 accept=".csv"
                                 >
@@ -59,7 +56,6 @@
                                 ref="money_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,4)" 
-                                :on-success="uploadSuccess"
                                 :on-error="uploadError"
                                 accept=".csv"
                                 >
@@ -95,7 +91,7 @@ export default {
             tableColumns1: [
                 {
                     title: '编号',
-                    key: 'ID'
+                    key: 'ID',
                 },
                 {
                     title: '提交时间',
@@ -103,15 +99,15 @@ export default {
                     width: 200
                 },
                 {
-                    title: '提交结果',
-                    key: '提交结果',
+                    title: '提交状态',
+                    key: 'PredictState',
                     render: (h, params) => {
                         return h('Tag', {
                             props:{
                                 type: 'dot',
-                                color: 'success'
+                                color: params.row['PredictState']==1 ? 'success' : params.row['PredictState']==0 ? 'warning' : 'error'
                             }
-                        }, '预测成功')
+                        }, params.row['PredictState']==1 ? '预测成功': params.row['PredictState']==0 ? '预测中...': '错误')
                     }
                 },
                 {
@@ -120,12 +116,13 @@ export default {
                     render: (h, params) => {
                         return h('Button',{
                             props: {
-                                type: 'success',
+                                //icon: "ios-download-outline",
+                                type: "primary",
+                                disabled: params.row['PredictState']==1 ? false : true
                             },
                             on: {
                                 click: () => {
-                                    //this.download(this.tableData1[params.index]['FilePath'])
-                                    this.getPredictState(this.tableData1[params.index]['FilePath'])
+                                    this.download(this.tableData1[params.index]['FilePath'])
                                 }
                             }
                         }, '下载')
@@ -186,6 +183,9 @@ export default {
                 }
                 Axios.post(api, data).then((res)=>{
                     this.getBatchRecord()
+                    this.timeout = setInterval(()=>{
+                        this.updatePredictState(this.UploadParams.time)
+                    }, 1000*1)
                 })
             }else
                 this.$Notice.warning({
@@ -203,19 +203,20 @@ export default {
             this.$refs.year_report.clearFiles()
             this.$refs.money_info.clearFiles()
         },
-        uploadSuccess(response, file, fileList){
-            //可在此设置定时任务，检测“提交结果”
-        },
         uploadError(error, file, fileList){
             this.$Notice.error({
                 title: '上传失败，请重试或联系管理员！'
             });
         },
-        getPredictState(filepath){
+        updatePredictState(filepath){
+            //console.log('执行定时任务')
             var api = this.$api_baseUrl + 'getPredictState/' + filepath
             Axios.get(api).then((res)=> {
-                console.log(res.data)
-                
+                //console.log(res.data)
+                if(res.data=='True'){
+                    this.getBatchRecord()
+                    clearInterval(this.timeout)
+                }
             })
         },
         download(filepath) {

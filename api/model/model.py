@@ -159,6 +159,7 @@ def get_train_set(base, money_info, paient_info, year_report):
     return train_set
 
 def predict(FILE_PATH,MODEL_PATH):
+    print('开始预测...')
     #读入数据
     base = pd.read_csv(os.path.join(FILE_PATH,'base.csv'),encoding="gbk")
     money_info = pd.read_csv(os.path.join(FILE_PATH,'money_info.csv'),encoding="gbk")

@@ -2,7 +2,7 @@
 <div class="singlequery">
     <Tabs value="name1">
         <TabPane label="公司信息" name="name1">
-            <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe size="large" max-height="700"></Table>
+            <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe size="small" max-height="450"></Table>
             <!--div style="margin: 10px;overflow: hidden">
                 <div style="float: right;">
                     <Page :total="100" :current="1" @on-change="changePage"></Page>

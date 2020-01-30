@@ -7,11 +7,13 @@ from werkzeug.utils import secure_filename
 
 from concurrent.futures import ThreadPoolExecutor
 from model.model import predict
-executor = ThreadPoolExecutor(2)
+executor = ThreadPoolExecutor(1)
 
+'''
 from apscheduler.schedulers.background import BackgroundScheduler
 scheduler = BackgroundScheduler()
 scheduler.start()
+'''
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'you-will-never-guess!'
@@ -91,6 +93,7 @@ def getCompanyInfo():
     #print(companys_list)
     return json.dumps(companys_list)
 
+'''使用线程池回调函数，解决了预测完成后的数据库预测状态更新的问题
 def updatePredictState():
     #print('开始执行定时任务')
     records = BatchRecord.query.order_by(BatchRecord.ID).all()
@@ -101,21 +104,32 @@ def updatePredictState():
             if record.PredictState == 0 or record.PredictState == 2:
                 record.PredictState = 1
                 db.session.commit()
-                return
         else:
             if record.PredictState == 1:
                 record.PredictState = 2
                 db.session.commit()
-                return
+'''
+
+CurrentFilePath = ''
+def predict_callback(res):
+    record = BatchRecord.query.filter_by(FilePath=CurrentFilePath).first()
+    if res.exception() is not None:
+        print('预测失败')
+        record.PredictState = 2
+        db.session.commit()
+    else:
+        print('预测成功')
+        record.PredictState = 1
+        db.session.commit()
 
 @app.route('/Upload', methods=['POST'])
 def Upload():
     if not os.path.exists(UPLOAD_PATH):
         os.mkdir(UPLOAD_PATH)
     file = request.files.get('file')
-    time = request.form.get('time')
+    filepath = request.form.get('filepath')
     type = request.form.get('type')
-    FILE_PATH = os.path.join(UPLOAD_PATH, time)
+    FILE_PATH = os.path.join(UPLOAD_PATH, filepath)
     if not os.path.exists(FILE_PATH):
         os.mkdir(FILE_PATH)
     #filename = secure_filename(file.filename)
@@ -123,15 +137,24 @@ def Upload():
     # 判断4个文件是否上传完毕
     if len(os.listdir(FILE_PATH))== 4:
         #print('4个文件上传完毕！')
+        record = BatchRecord()
+        record.CreatTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
+        record.FilePath = filepath
+        db.session.add(record)
+        db.session.commit()
+
         MODEL_PATH = "/Users/mouyu/Public/GitHub/zombie_company/api/model/ModelLR.plk"
         # 异步对文件进行预测
-        executor.submit(predict, FILE_PATH, MODEL_PATH)
+        global CurrentFilePath
+        CurrentFilePath = filepath
+        executor.submit(predict, FILE_PATH, MODEL_PATH).add_done_callback(predict_callback)
         # 添加定时任务, 检测提交状态
+        '''
         try:
             scheduler.add_job(updatePredictState, 'interval', seconds=1, id='predictstate')
         except:
             pass
-
+        '''
     return type + 'accept!'
 
 @app.route('/getBatchRecord', methods=['GET'])
@@ -146,18 +169,6 @@ def getBatchRecord():
         record['PredictState'] = a.PredictState
         records_list.append(record)
     return json.dumps(records_list)
-
-@app.route('/addBatchRecord', methods=['POST'])
-def addBatchRecord():
-    data = request.get_json()
-    filepath = data['FilePath']
-    record = BatchRecord()
-    record.CreatTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
-    record.FilePath = filepath
-    db.session.add(record)
-    db.session.commit()
-    return 'ok'
-
 
 @app.route('/getPredictState/<filepath>', methods=["GET"])
 def getPredictState(filepath):
@@ -176,6 +187,14 @@ def Download(filepath):
     RESULT_PATH = os.path.join(UPLOAD_PATH,filepath)
     #print(RESULT_PATH)
     return send_from_directory(RESULT_PATH, 'predictResult.csv', as_attachment=True)
+
+@app.route('/Delete', methods=['POST'])
+def Delete():
+    filepath = request.get_json()['FilePath']
+    record = BatchRecord.query.filter_by(FilePath=filepath).first()
+    db.session.delete(record)
+    db.session.commit()
+    return 'delete' + filepath
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)

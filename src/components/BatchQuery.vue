@@ -3,7 +3,7 @@
     <Tabs value="name1">
         <TabPane label="批量查询" name="name1">
             <br>
-            <Row>
+            <Row type="flex" justify="space-around" align="top">
                 <Col span="8" style="text-align:left;">
                     <Form label-position="left" :label-width="100">
                         <p style="color:#ed4014;">请按照提示上传相应文件</p>
@@ -14,7 +14,10 @@
                                 ref="base" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,1)" 
+                                :on-success="(response,file,fileList,i)=>uploadSuccess(response,file,fileList,1)"
                                 :on-error="uploadError"
+                                :max-size="20 * 1024"
+                                :on-exceeded-size="handleMaxSize"
                                 accept=".csv"
                                 >
                                 <Button icon="ios-cloud-upload-outline" v-if="!base">选择文件</Button>
@@ -28,7 +31,10 @@
                                 ref="paient_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,2)" 
+                                :on-success="(response,file,fileList,i)=>uploadSuccess(response,file,fileList,2)"
                                 :on-error="uploadError"
+                                :max-size="20 * 1024"
+                                :on-exceeded-size="handleMaxSize"
                                 accept=".csv"
                                 >
                                 <Button icon="ios-cloud-upload-outline" v-if="!paient_info">选择文件</Button>
@@ -42,7 +48,10 @@
                                 ref="year_report" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,3)" 
+                                :on-success="(response,file,fileList,i)=>uploadSuccess(response,file,fileList,3)"
                                 :on-error="uploadError"
+                                :max-size="20 * 1024"
+                                :on-exceeded-size="handleMaxSize"
                                 accept=".csv"
                                 >
                                 <Button icon="ios-cloud-upload-outline" v-if="!year_report">选择文件</Button>
@@ -56,7 +65,10 @@
                                 ref="money_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,4)" 
+                                :on-success="(response,file,fileList,i)=>uploadSuccess(response,file,fileList,4)"
                                 :on-error="uploadError"
+                                :max-size="20 * 1024"
+                                :on-exceeded-size="handleMaxSize"
                                 accept=".csv"
                                 >
                                 <Button icon="ios-cloud-upload-outline" v-if="!money_info">选择文件</Button>
@@ -64,13 +76,13 @@
                                 <div slot="tip" style="color:#808695;">支持拓展名: .csv</div>
                             </Upload>
                         </FormItem>
-                            <Button type="success" size="large" style="width:100px;" @click="upload">提交</Button>
-                            <Button type="error" size="large" style="width:100px; marginLeft:25px;" @click="clear">清空</Button>
+                            <Button type="success" size="normal" style="width:200px;"  @click="upload">提交</Button>
+                            <!--Button type="error" size="normal" style="width:100px; marginLeft:25px;" @click="clear">清空</Button-->
 
                     </Form>
                 </Col>
-                <Col span="12">
-                    <Table :data="tableData1" :columns="tableColumns1" stripe size="large" max-height="700"></Table>
+                <Col span="15">
+                    <Table :data="tableData1" :columns="tableColumns1" stripe size="normal" max-height="450"></Table>
                 </Col>
             </Row>
         </TabPane>
@@ -87,11 +99,16 @@ export default {
             paient_info: '',
             year_report: '',
             money_info: '',
+            base_success: false,
+            paient_info_success: false,
+            year_report_success: false,
+            money_info_success: false,
             UploadParams: {},
             tableColumns1: [
                 {
                     title: '编号',
                     key: 'ID',
+                    width: 70,
                 },
                 {
                     title: '提交时间',
@@ -101,33 +118,61 @@ export default {
                 {
                     title: '提交状态',
                     key: 'PredictState',
+                    width: 160,
                     render: (h, params) => {
                         return h('Tag', {
                             props:{
                                 type: 'dot',
                                 color: params.row['PredictState']==1 ? 'success' : params.row['PredictState']==0 ? 'warning' : 'error'
                             }
-                        }, params.row['PredictState']==1 ? '预测成功': params.row['PredictState']==0 ? '预测中...': '错误')
+                        }, params.row['PredictState']==1 ? '预测成功': params.row['PredictState']==0 ? '预测中...': '文件错误')
                     }
                 },
                 {
                     title: '操作',
                     key: '操作',
+                    width: 170,
                     render: (h, params) => {
-                        return h('Button',{
-                            props: {
-                                //icon: "ios-download-outline",
-                                type: "primary",
-                                disabled: params.row['PredictState']==1 ? false : true
-                            },
-                            on: {
-                                click: () => {
-                                    this.download(this.tableData1[params.index]['FilePath'])
+                        if(params.row['PredictState']==0){
+                            return h('Button',{
+                                props: {
+                                    type: 'warning',
+                                    long: true,
+                                    shape: 'circle',
+                                    loading: true,
                                 }
-                            }
-                        }, '下载')
+                            }, '')
+                        }else{
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        //icon: "ios-download-outline",
+                                        type: "primary",
+                                        disabled: params.row['PredictState']==1 ? false : true
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.download(this.tableData1[params.index]['FilePath'])
+                                        }
+                                    }
+                                }, '下载'),
+                                h('Button', {
+                                    props:{
+                                        type: 'error'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.delete(this.tableData1[params.index]['FilePath'])
+                                        }
+                                    }
+                                }, '删除')
+                            ])
+                        }
                     }
-                },
+                }
             ],
             tableData1: []
         }
@@ -166,9 +211,34 @@ export default {
             }
             return false
         },
+        handleMaxSize (file) {
+            this.$Notice.warning({
+                title: '文件大小超限',
+                desc: '文件  ' + file.name + ' 太大，上传文件大小不能超过20M.'
+            });
+        },
+        uploadSuccess(response,file,fileList,i) {
+            if(i==1)        this.base_success = true
+            else if(i==2)   this.paient_info_success = true
+            else if(i==3)   this.year_report_success = true
+            else if(i==4)   this.money_info_success = true
+            if(this.base_success && this.paient_info_success && this.year_report_success && this.money_info_success){
+                this.base_success = false
+                this.paient_info_success = false
+                this.year_report_success = false
+                this.money_info_success = false
+                this.getBatchRecord()
+                setTimeout(() => {
+                    this.clear()
+                }, 1000);
+                this.timeout = setInterval(()=>{
+                    this.updatePredictState(this.UploadParams.filepath)
+                }, 1000*1)
+            }
+        },
         upload() {
             if(this.base && this.paient_info && this.year_report && this.money_info){
-                this.UploadParams.time = this.getTime()
+                this.UploadParams.filepath = this.getTime()
                 this.UploadParams.type = 'base'
                 this.$refs.base.post(this.base)
                 this.UploadParams.type = 'paient_info'
@@ -177,16 +247,11 @@ export default {
                 this.$refs.year_report.post(this.year_report)
                 this.UploadParams.type = 'money_info'
                 this.$refs.money_info.post(this.money_info)
-                var api = this.$api_baseUrl + 'addBatchRecord'
-                var data = {
-                    FilePath: this.UploadParams.time
-                }
-                Axios.post(api, data).then((res)=>{
-                    this.getBatchRecord()
-                    this.timeout = setInterval(()=>{
-                        this.updatePredictState(this.UploadParams.time)
-                    }, 1000*1)
-                })
+
+                this.base = ''
+                this.paient_info = ''
+                this.year_report = ''
+                this.money_info = ''
             }else
                 this.$Notice.warning({
                     title: '文件缺失',
@@ -224,6 +289,15 @@ export default {
             let a = document.createElement('a')
             a.href = url
             a.click();
+        },
+        delete(filepath) {
+            var api = this.$api_baseUrl + 'Delete'
+            var data = {
+                FilePath: filepath
+            }
+            Axios.post(api, data).then((res)=>{
+                this.getBatchRecord()
+            })
         }
     },
     mounted() {

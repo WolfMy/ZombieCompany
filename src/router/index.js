@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SingleQuery from '@/components/SingleQuery.vue'
+import BatchQuery from '@/components/BatchQuery.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +8,12 @@ const routes = [
   {
     path: '/SingleQuery',
     name: 'SingleQuery',
-    component: SingleQuery
+    component: () => import('@/components/SingleQuery.vue'),
   },
   {
     path: '/BatchQuery',
     name: 'BatchQuery',
-    component: () => import('@/components/BatchQuery.vue'),
+    component: BatchQuery
   }
 ]
 

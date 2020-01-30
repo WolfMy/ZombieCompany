@@ -7,20 +7,22 @@
                 </Menu>
             </Header>
             <Layout>
-                <Sider hide-trigger :style="{background: '#fff'}">
-                    <Menu active-name="1-1" theme="light" width="auto" :open-names="['1']">
+                <Sider :style="{background: '#fff'}">
+                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
                             <template slot="title">
                                 <Icon type="ios-navigate"></Icon>
                                 系统菜单
                             </template>
+                            <!--暂时取消单条查询功能
                             <router-link to="/SingleQuery" style="color:#515a6e;"><MenuItem name="1-1">单条查询</MenuItem></router-link>
+                            -->
                             <router-link to="/BatchQuery" style="color:#515a6e;"><MenuItem name="1-2">批量查询</MenuItem></router-link>
                         </Submenu>
                     </Menu>
                 </Sider>
                 <Layout :style="{padding: '0 24px 24px'}">
-                    <Content :style="{padding: '24px', minHeight: '750px', background: '#fff'}">
+                    <Content :style="{padding: '24px', minHeight: '500px', background: '#fff'}">
                         <slot />
                     </Content>
                 </Layout>

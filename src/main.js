@@ -7,7 +7,8 @@ import router from '@/router'
 Vue.config.productionTip = false
 Vue.use(ViewUI)
 
-Vue.prototype.$api_baseUrl = 'http://127.0.0.1:5000/'
+//Vue.prototype.$api_baseUrl = 'http://127.0.0.1:5000/'
+Vue.prototype.$api_baseUrl = 'http://120.27.192.52:8081/'
 
 new Vue({
   render: h => h(App),

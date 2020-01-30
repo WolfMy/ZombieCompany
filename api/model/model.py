@@ -174,7 +174,6 @@ def predict(FILE_PATH,MODEL_PATH):
     
     result = get_result(train_set, LR)
     result.to_csv(os.path.join(FILE_PATH, "predictResult.csv"))
-    return 'predit done!'
 
 #传入训练集 和 预训练好的模型 函数内部自动保存结果 返回结果
 def get_result(train_set, model):

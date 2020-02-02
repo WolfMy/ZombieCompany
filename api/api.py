@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import json, os, time, datetime
+import json, os, shutil, time, datetime
 from werkzeug.utils import secure_filename
 
 from concurrent.futures import ThreadPoolExecutor
@@ -143,7 +143,7 @@ def Upload():
         db.session.add(record)
         db.session.commit()
 
-        MODEL_PATH = "/Users/mouyu/Public/GitHub/zombie_company/api/model/ModelLR.plk"
+        MODEL_PATH = os.path.join(os.path.join(os.path.dirname(__file__), "model"), "ModelLR.plk")
         # 异步对文件进行预测
         global CurrentFilePath
         CurrentFilePath = filepath
@@ -194,6 +194,7 @@ def Delete():
     record = BatchRecord.query.filter_by(FilePath=filepath).first()
     db.session.delete(record)
     db.session.commit()
+    shutil.rmtree(os.path.join(UPLOAD_PATH, filepath), ignore_errors=True)
     return 'delete' + filepath
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BatchQuery from '@/components/BatchQuery.vue'
-
+import DataVisualization from '@/components/Echarts.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,6 +14,11 @@ const routes = [
     path: '/BatchQuery',
     name: 'BatchQuery',
     component: BatchQuery
+  },
+  {
+    path: '/DataVisualization',
+    name: 'DataVisualization',
+    component: DataVisualization
   }
 ]
 

@@ -165,7 +165,8 @@ export default {
                                     },
                                     on: {
                                         click: () => {
-                                            this.delete(this.tableData1[params.index]['FilePath'])
+                                            this.beforeDelete(this.tableData1[params.index]['FilePath'])
+                                            //this.delete(this.tableData1[params.index]['FilePath'])
                                         }
                                     }
                                 }, '删除')
@@ -180,13 +181,13 @@ export default {
     methods: {
         getTime() {
             let now = new Date()
-            let yy = now.getFullYear();
-            let mm = now.getMonth()+1
-            let dd = now.getDate()
-            let hh = now.getHours()
-            let mf = now.getMinutes()<10 ? '0'+now.getMinutes() : now.getMinutes()
-            let ss = now.getSeconds()<10 ? '0'+now.getSeconds() : now.getSeconds()
-            return yy+''+mm+dd+hh+mf+ss
+            let yy = now.getFullYear()+'';
+            let mm = now.getMonth()+1<10 ? '0'+(now.getMonth()+1) : now.getMonth()+1+''
+            let dd = now.getDate()<10 ? '0'+now.getDate() : now.getDate()+''
+            let hh = now.getHours()<10 ? '0'+now.getHours() : now.getHours()+'' 
+            let mf = now.getMinutes()<10 ? '0'+now.getMinutes() : now.getMinutes()+''
+            let ss = now.getSeconds()<10 ? '0'+now.getSeconds() : now.getSeconds()+''
+            return yy+'-'+mm+'-'+dd+'-'+hh+mf+ss
         },
         getBatchRecord() {
             var api = this.$api_baseUrl + 'getBatchRecord'
@@ -289,6 +290,15 @@ export default {
             let a = document.createElement('a')
             a.href = url
             a.click();
+        },
+        beforeDelete(filepath) {
+            this.$Modal.confirm({
+                        title: '删除确认',
+                        content: '您确认要删除此条记录吗？',
+                        onOk: () => {
+                            this.delete(filepath)
+                        }
+                    });
         },
         delete(filepath) {
             var api = this.$api_baseUrl + 'Delete'

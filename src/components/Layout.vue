@@ -8,7 +8,7 @@
             </Header>
             <Layout>
                 <Sider :style="{background: '#fff'}">
-                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
+                    <Menu theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
                             <template slot="title">
                                 <Icon type="ios-navigate"></Icon>
@@ -18,6 +18,7 @@
                             <router-link to="/SingleQuery" style="color:#515a6e;"><MenuItem name="1-1">单条查询</MenuItem></router-link>
                             -->
                             <router-link to="/BatchQuery" style="color:#515a6e;"><MenuItem name="1-2">批量查询</MenuItem></router-link>
+                            <router-link to="/DataVisualization" style="color:#515a6e;"><MenuItem name="1-3">数据可视化</MenuItem></router-link>
                         </Submenu>
                     </Menu>
                 </Sider>

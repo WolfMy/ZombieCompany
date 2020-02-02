@@ -168,7 +168,6 @@ def predict(FILE_PATH,MODEL_PATH):
 
     #得到训练集
     train_set = get_train_set(base, money_info, paient_info, year_report)
-    train_set = train_set[train_set["flag"]==1]
 
     LR = joblib.load(MODEL_PATH)
     

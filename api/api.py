@@ -143,7 +143,7 @@ def Upload():
         db.session.add(record)
         db.session.commit()
 
-        MODEL_PATH = os.path.join(os.path.join(os.path.dirname(__file__), "model"), "ModelLR.plk")
+        MODEL_PATH = os.path.join(os.path.join(os.path.dirname(__file__), "model"), "ModelXgboost.plk")
         # 异步对文件进行预测
         global CurrentFilePath
         CurrentFilePath = filepath

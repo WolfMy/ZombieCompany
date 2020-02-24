@@ -1,10 +1,20 @@
 <template>
 <div class="batchquery">
+<Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
+    <BreadcrumbItem>
+        系统菜单
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        <Icon type="ios-search" />
+        批量查询
+    </BreadcrumbItem>
+</Breadcrumb>
+<Card dis-hover>
     <Tabs value="name1">
         <TabPane label="批量查询" name="name1">
             <br>
             <Row type="flex" justify="space-around" align="top">
-                <Col span="8" style="text-align:left;">
+                <Col span="6" style="text-align:left;">
                     <Form label-position="left" :label-width="100">
                         <p style="color:#ed4014;">请按照提示上传相应文件</p>
                         <br>
@@ -76,17 +86,18 @@
                                 <div slot="tip" style="color:#808695;">支持拓展名: .csv</div>
                             </Upload>
                         </FormItem>
-                            <Button type="success" size="normal" style="width:200px;"  @click="upload">提交</Button>
+                            <Button type="success" style="width:200px;"  @click="upload">提交</Button>
                             <!--Button type="error" size="normal" style="width:100px; marginLeft:25px;" @click="clear">清空</Button-->
-
                     </Form>
                 </Col>
-                <Col span="15">
-                    <Table :data="tableData1" :columns="tableColumns1" stripe size="normal" max-height="450"></Table>
+                <Col span="14">
+                    <Table :data="tableData1" :columns="tableColumns1" stripe max-height="450"></Table>
                 </Col>
             </Row>
+            <br>
         </TabPane>
     </Tabs>
+</Card>
 </div>
 </template>
 
@@ -108,17 +119,17 @@ export default {
                 {
                     title: '编号',
                     key: 'ID',
-                    width: 70,
+
                 },
                 {
                     title: '提交时间',
                     key: 'CreatTime',
-                    width: 200
+
                 },
                 {
                     title: '提交状态',
                     key: 'PredictState',
-                    width: 160,
+
                     render: (h, params) => {
                         return h('Tag', {
                             props:{
@@ -131,7 +142,7 @@ export default {
                 {
                     title: '操作',
                     key: '操作',
-                    width: 170,
+
                     render: (h, params) => {
                         if(params.row['PredictState']==0){
                             return h('Button',{
@@ -151,7 +162,7 @@ export default {
                                         disabled: params.row['PredictState']==1 ? false : true
                                     },
                                     style: {
-                                        marginRight: '5px'
+                                        marginRight: '10px'
                                     },
                                     on: {
                                         click: () => {

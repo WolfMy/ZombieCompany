@@ -7,23 +7,37 @@
                 </Menu>
             </Header>
             <Layout>
-                <Sider :style="{background: '#fff'}">
-                    <Menu theme="light" width="auto" :open-names="['1']">
-                        <Submenu name="1">
-                            <template slot="title">
-                                <Icon type="ios-navigate"></Icon>
-                                系统菜单
-                            </template>
-                            <!--暂时取消单条查询功能
-                            <router-link to="/SingleQuery" style="color:#515a6e;"><MenuItem name="1-1">单条查询</MenuItem></router-link>
-                            -->
-                            <router-link to="/BatchQuery" style="color:#515a6e;"><MenuItem name="1-2">批量查询</MenuItem></router-link>
-                            <router-link to="/DataVisualization" style="color:#515a6e;"><MenuItem name="1-3">数据可视化</MenuItem></router-link>
-                        </Submenu>
-                    </Menu>
-                </Sider>
+                <ButtonGroup style="position:fixed;top:50%;margin:-25px" vertical>
+                    <Button @click="isCollapsed = true" shape="circle" style="background:#515a6e;height:100px;width:50px;text-align:left;">
+                        <Icon type="ios-arrow-forward" color="white" size="40" />
+                    </Button>
+                </ButtonGroup>
+                <Drawer title="僵尸企业检测" placement="left" :closable="false" v-model="isCollapsed" >
+                    <Menu theme="light" mode="vertical" width="auto" @on-select="isCollapsed = false">
+                        <MenuGroup title="系统菜单">
+                            <MenuItem name="1-1"  to="/BatchQuery">
+                                <Icon type="ios-search" />
+                                批量查询
+                            </MenuItem>
+                        </MenuGroup>
+                        <MenuGroup title="数据可视化">
+                            <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
+                                <Icon type="ios-information-circle-outline" />
+                                基本信息
+                            </MenuItem>
+                            <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
+                                <Icon type="ios-analytics" />
+                                关联性探索
+                            </MenuItem>
+                            <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
+                                <Icon type="ios-reverse-camera" />
+                                僵尸企业画像
+                            </MenuItem>
+                        </MenuGroup>
+                    </Menu>   
+                </Drawer>
                 <Layout :style="{padding: '0 24px 24px'}">
-                    <Content :style="{padding: '24px', minHeight: '500px', background: '#fff'}">
+                    <Content :style="{padding: '12px', minHeight: '500px', background: '#f5f7f9'}">
                         <slot />
                     </Content>
                 </Layout>
@@ -34,7 +48,13 @@
 
 <script>
     export default {
-        
+        data() {
+            return {
+                isCollapsed: false
+            }
+        },
+        methods:{
+        }
     }
 </script>
 

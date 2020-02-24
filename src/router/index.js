@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BatchQuery from '@/components/BatchQuery.vue'
-import DataVisualization from '@/components/Echarts.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,9 +15,24 @@ const routes = [
     component: BatchQuery
   },
   {
-    path: '/DataVisualization',
-    name: 'DataVisualization',
-    component: DataVisualization
+    path: '/DataVisualization/BasicInformation',
+    name: 'BasicInformation',
+    component: () => import('@/components/DataVisualization/BasicInformation.vue')
+  },
+  {
+    path: '/DataVisualization/RelevanceExplore',
+    name: 'RelevanceExplore',
+    component: () => import('@/components/DataVisualization/RelevanceExplore.vue')
+  },
+  {
+    path: '/DataVisualization/CorporatePortraits',
+    name: 'CorporatePortraits',
+    component: () => import('@/components/DataVisualization/CorporatePortraits.vue')
+  },
+  {
+    // 默认跳转
+    path: '*',
+    redirect: '/BatchQuery'
   }
 ]
 

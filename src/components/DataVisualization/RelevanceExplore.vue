@@ -9,8 +9,8 @@
             关联性探索
         </BreadcrumbItem>
     </Breadcrumb>
-    <Row :gutter="16" type="flex" align="middle">
-        <Col span="15">
+    <Row :gutter="16" type="flex" align="middle" style="margin:0px -16px;">
+        <Col :md="15" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <h2 slot="title" style="text-align:left">
                     各企业注册时间与僵尸企业的数量关系
@@ -18,7 +18,7 @@
                 <div id="demo1" style="height:400px;"></div>
             </Card>
         </Col>
-        <Col span="9">
+        <Col :md="9" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <!--h2 slot="title" style="text-align:left">
                     4
@@ -28,8 +28,8 @@
         </Col>
     </Row>
     <br>
-    <Row :gutter="16"  type="flex" align="middle">
-        <Col span="10">
+    <Row :gutter="16"  type="flex" align="middle" style="margin:0px -16px;">
+        <Col :md="10" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <h2 slot="title" style="text-align:left">
                     三年企业纳税情况
@@ -37,7 +37,7 @@
                 <div id="demo2" style="height:500px;"></div>
             </Card>
         </Col>
-        <Col span="14">
+        <Col :md="14" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <!--h2 slot="title" style="text-align:left">
                     3
@@ -47,7 +47,7 @@
         </Col>
     </Row>
     <br>
-    <Row>
+    <Row style="margin:0px -16px;">
         <Card dis-hover>
             <!--h2 slot="title" style="text-align:left">
                 5

@@ -9,8 +9,8 @@
             基本信息
         </BreadcrumbItem>
     </Breadcrumb>
-    <Row :gutter="16">
-        <Col span="14">
+    <Row :gutter="16" style="margin:0px -16px;">
+        <Col :md="14" :xs="24" style="margin:16px 0px;">
             <Card dis-hover :padding="8">
                 <h2 slot="title" style="text-align:left">
                     基础数据
@@ -18,7 +18,7 @@
                 <div id="demo1" style="height:500px;"></div>
             </Card>
         </Col>
-        <Col span="10">
+        <Col :md="10" :xs="24" style="margin:16px 0px;">
             <Card dis-hover :padding="8">
                 <h2 slot="title" style="text-align:left">
                     中国僵尸企业分布
@@ -27,9 +27,8 @@
             </Card>
         </Col>
     </Row>
-    <br>
-    <Row :gutter="16">
-        <Col span="8">
+    <Row :gutter="16" style="margin:0px -16px;">
+        <Col :md="8" :xs="24" style="margin:16px 0px;">
             <Card dis-hover style="text-align:left" :padding="24">
                 <h2 slot="title">
                     每年注册公司数量
@@ -37,7 +36,7 @@
                 <div id="demo4" style="height:400px;"></div>
             </Card>
         </Col>
-        <Col span="16">
+        <Col :md="16" :xs="24" style="margin:16px 0px;">
             <Card dis-hover style="text-align:left" :padding="24">
                 <h2 slot="title">
                     各数量占比

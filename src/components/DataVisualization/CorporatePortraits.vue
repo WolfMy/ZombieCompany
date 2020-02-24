@@ -59,8 +59,7 @@
             </ListItem>
         </List>
     </Card>
-    <br>
-    <Card dis-hover :padding="16">
+    <Card dis-hover :padding="16" style="margin:16px -16px;">
         <!--h2 slot="title" style="text-align:left">
             1
         </h2-->

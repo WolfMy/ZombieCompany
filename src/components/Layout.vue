@@ -2,9 +2,7 @@
     <div class="layout">
         <Layout>
             <Header>
-                <Menu mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo"></div>
-                </Menu>
+                <img class="layout-logo" src="logo.png">
             </Header>
             <Layout>
                 <ButtonGroup style="position:fixed;top:50%;margin:-25px" vertical>
@@ -40,6 +38,7 @@
                     <Content :style="{padding: '12px', minHeight: '500px', background: '#f5f7f9'}">
                         <slot />
                     </Content>
+                    <Footer style="text-align:center;">2019-2020 Created By 讨论404</Footer>
                 </Layout>
             </Layout>
         </Layout>
@@ -67,8 +66,8 @@
     overflow: hidden;
 }
 .layout-logo{
-    width: 100px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
     background: #5b6270;
     border-radius: 3px;
     float: left;

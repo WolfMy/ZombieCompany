@@ -1,23 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BatchQuery from '@/components/BatchQuery.vue'
+import BasicInformation from '@/components/DataVisualization/BasicInformation.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/SingleQuery',
-    name: 'SingleQuery',
-    component: () => import('@/components/SingleQuery.vue'),
-  },
-  {
     path: '/BatchQuery',
     name: 'BatchQuery',
-    component: BatchQuery
+    component: () => import ('@/components/BatchQuery.vue')
   },
   {
     path: '/DataVisualization/BasicInformation',
     name: 'BasicInformation',
-    component: () => import('@/components/DataVisualization/BasicInformation.vue')
+    component: BasicInformation
   },
   {
     path: '/DataVisualization/RelevanceExplore',
@@ -32,7 +27,7 @@ const routes = [
   {
     // 默认跳转
     path: '*',
-    redirect: '/BatchQuery'
+    redirect: '/DataVisualization/BasicInformation'
   }
 ]
 

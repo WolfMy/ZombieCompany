@@ -14,7 +14,7 @@
         <TabPane label="批量查询" name="name1">
             <br>
             <Row type="flex" justify="space-around" align="top">
-                <Col span="6" style="text-align:left;">
+                <Col :md="6" :xs="24" style="text-align:left;margin:16px 0px;">
                     <Form label-position="left" :label-width="100">
                         <p style="color:#ed4014;">请按照提示上传相应文件</p>
                         <br>
@@ -90,7 +90,7 @@
                             <!--Button type="error" size="normal" style="width:100px; marginLeft:25px;" @click="clear">清空</Button-->
                     </Form>
                 </Col>
-                <Col span="14">
+                <Col :md="16" :xs="24" style="margin:16px 0px;">
                     <Table :data="tableData1" :columns="tableColumns1" stripe max-height="450"></Table>
                 </Col>
             </Row>

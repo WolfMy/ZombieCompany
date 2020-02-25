@@ -210,7 +210,7 @@ export default {
 
             myChart1.setOption(option1);
 
-            Axios.get("demo6.json").then((res)=>{
+            Axios.get("data/demo6.json").then((res)=>{
                 var myChart2 = this.$echarts.init(document.getElementById('demo2'), "light");
                 var option2 = {
                     color: color,

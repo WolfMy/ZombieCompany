@@ -13,6 +13,10 @@ export default {
   name: 'app',
   components: {
     Layout
+  },
+  mounted(){
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('spinner').style.display = 'none';
   }
 }
 </script>

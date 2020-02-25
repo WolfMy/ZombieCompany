@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BasicInformation from '@/components/DataVisualization/BasicInformation.vue'
+import Home from '@/components/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/Home',
+    name: Home,
+    component: Home
+  },
   {
     path: '/BatchQuery',
     name: 'BatchQuery',
@@ -12,7 +17,7 @@ const routes = [
   {
     path: '/DataVisualization/BasicInformation',
     name: 'BasicInformation',
-    component: BasicInformation
+    component: () => import ('@/components/DataVisualization/BasicInformation.vue')
   },
   {
     path: '/DataVisualization/RelevanceExplore',
@@ -27,7 +32,7 @@ const routes = [
   {
     // 默认跳转
     path: '*',
-    redirect: '/DataVisualization/BasicInformation'
+    redirect: '/Home'
   }
 ]
 

@@ -1,6 +1,6 @@
 <template>
 <div class="RelevanceExplore">
-    <Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
+    <Breadcrumb style="text-align:left;margin:0px;">
         <BreadcrumbItem>
             数据可视化
         </BreadcrumbItem>
@@ -27,7 +27,6 @@
             </Card>
         </Col>
     </Row>
-    <br>
     <Row :gutter="16"  type="flex" align="middle" style="margin:0px -16px;">
         <Col :md="10" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
@@ -46,14 +45,15 @@
             </Card>
         </Col>
     </Row>
-    <br>
-    <Row style="margin:0px -16px;">
-        <Card dis-hover>
-            <!--h2 slot="title" style="text-align:left">
-                5
-            </h2-->
-            <div id="demo5" style="height:500px;"></div>
-        </Card>
+    <Row style="margin:0px -10px;">
+        <Col span="24">
+            <Card dis-hover>
+                <!--h2 slot="title" style="text-align:left">
+                    5
+                </h2-->
+                <div id="demo5" style="height:500px;"></div>
+            </Card>
+        </Col>
     </Row>
 </div>
 </template>

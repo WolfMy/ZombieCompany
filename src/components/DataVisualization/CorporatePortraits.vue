@@ -1,6 +1,6 @@
 <template>
 <div class="CorporatePortraits">
-    <Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
+    <Breadcrumb style="text-align:left;margin:0px;">
         <BreadcrumbItem>
             数据可视化
         </BreadcrumbItem>
@@ -9,57 +9,61 @@
             僵尸企业画像
         </BreadcrumbItem>
     </Breadcrumb>
-    <Card dis-hover :padding="16" style="width:400px;">
-        <h2 slot="title" style="text-align:left;">
-            公司信息
-        </h2>
-        <template slot="extra">
-            <Tag color="green">著作权</Tag>
-            <Tag color="blue">商标</Tag>
-            <Tag color="geekblue">专利</Tag>
-        </template>
-        
-        <!--CellGroup style="text-align:left;">
-            <Cell title="ID" extra="28" />
-            <Cell title="是否僵尸企业" extra="是" />
-            <Cell title="注册时间" extra="2007" />
-            <Cell title="注册资本" extra="2050万" />
-            <Cell title="控制人类型" extra="企业法人" />
-            <Cell title="区域" extra="福建" />
-            <Cell title="企业类型" extra="农民专业合作社" />
-        </CellGroup-->
-        <List style="text-align:left;">
-            <ListItem>
-                <ListItemMeta title="ID" />
-                <template slot="extra">28</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="是否僵尸企业" />
-                <template slot="extra">是</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="注册时间" />
-                <template slot="extra">2007年</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="注册资本" />
-                <template slot="extra">2050万</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="控制人类型" />
-                <template slot="extra">企业法人</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="区域" />
-                <template slot="extra">福建</template>
-            </ListItem>
-            <ListItem>
-                <ListItemMeta title="企业类型" />
-                <template slot="extra">农民专业合作社</template>
-            </ListItem>
-        </List>
-    </Card>
-    <Card dis-hover :padding="16" style="margin:16px -16px;">
+    <Row style="margin:16px 0px 0px;">
+        <Col :md="6" :xs="24">
+            <Card dis-hover :padding="16">
+                <h2 slot="title" style="text-align:left;">
+                    公司信息
+                </h2>
+                <template slot="extra">
+                    <Tag color="green">著作权</Tag>
+                    <Tag color="blue">商标</Tag>
+                    <Tag color="geekblue">专利</Tag>
+                </template>
+                
+                <!--CellGroup style="text-align:left;">
+                    <Cell title="ID" extra="28" />
+                    <Cell title="是否僵尸企业" extra="是" />
+                    <Cell title="注册时间" extra="2007" />
+                    <Cell title="注册资本" extra="2050万" />
+                    <Cell title="控制人类型" extra="企业法人" />
+                    <Cell title="区域" extra="福建" />
+                    <Cell title="企业类型" extra="农民专业合作社" />
+                </CellGroup-->
+                <List style="text-align:left;">
+                    <ListItem>
+                        <ListItemMeta title="ID" />
+                        <template slot="extra">28</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="是否僵尸企业" />
+                        <template slot="extra">是</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="注册时间" />
+                        <template slot="extra">2007年</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="注册资本" />
+                        <template slot="extra">2050万</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="控制人类型" />
+                        <template slot="extra">企业法人</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="区域" />
+                        <template slot="extra">福建</template>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemMeta title="企业类型" />
+                        <template slot="extra">农民专业合作社</template>
+                    </ListItem>
+                </List>
+            </Card>
+        </Col>
+    </Row>
+    <Card dis-hover :padding="16" style="margin:16px 0px;">
         <!--h2 slot="title" style="text-align:left">
             1
         </h2-->

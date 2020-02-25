@@ -3,15 +3,48 @@
         <Layout>
             <Header>
                 <img class="layout-logo" src="logo.png">
+                <Menu v-show="isShow" class="layout-menu" theme="dark" mode="horizontal" style="text-align:left;">
+                    <MenuItem name="0" to="/Home">
+                        <Icon type="ios-home" />
+                            首页
+                    </MenuItem>
+                    <MenuItem name="1-1"  to="/BatchQuery">
+                        <Icon type="ios-search" />
+                        批量查询
+                    </MenuItem>
+                    <Submenu name="DataVisualization">
+                        <template slot="title">
+                            <Icon type="ios-analytics" />
+                            数据可视化
+                        </template>
+                        <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
+                            <Icon type="ios-information-circle-outline" />
+                            基本信息
+                        </MenuItem>
+                        <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
+                            <Icon type="ios-analytics" />
+                            关联性探索
+                        </MenuItem>
+                        <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
+                            <Icon type="ios-reverse-camera" />
+                            僵尸企业画像
+                        </MenuItem>
+                    </Submenu>
+                </Menu>
             </Header>
             <Layout>
-                <ButtonGroup style="position:fixed;top:50%;margin:-25px" vertical>
-                    <Button @click="isCollapsed = true" shape="circle" style="background:#515a6e;height:100px;width:50px;text-align:left;">
-                        <Icon type="ios-arrow-forward" color="white" size="40" />
+                <div v-show="!isShow" style="position:fixed;top:50%;margin:-25px;">
+                <ButtonGroup vertical>
+                    <Button @click="isCollapsed = true" shape="circle" style="background:#515a6e;height:100px;width:40px;text-align:left;">
+                        <Icon type="ios-arrow-forward" color="white" size="32" />
                     </Button>
                 </ButtonGroup>
                 <Drawer title="僵尸企业检测" placement="left" :closable="false" v-model="isCollapsed" >
                     <Menu theme="light" mode="vertical" width="auto" @on-select="isCollapsed = false">
+                        <MenuItem name="0" to="/Home">
+                            <Icon type="ios-home" />
+                                首页
+                        </MenuItem>
                         <MenuGroup title="系统菜单">
                             <MenuItem name="1-1"  to="/BatchQuery">
                                 <Icon type="ios-search" />
@@ -34,8 +67,9 @@
                         </MenuGroup>
                     </Menu>   
                 </Drawer>
+                </div>
                 <Layout :style="{padding: '0 24px 24px'}">
-                    <Content :style="{padding: '12px', minHeight: '500px', background: '#f5f7f9'}">
+                    <Content :style="{padding: '12px 0px', minHeight: '700px', background: '#f5f7f9'}">
                         <slot />
                     </Content>
                     <Footer style="text-align:center;">2019-2020 Created By 讨论404</Footer>
@@ -49,17 +83,22 @@
     export default {
         data() {
             return {
+                isShow: true,
                 isCollapsed: false
             }
         },
-        methods:{
+        mounted() {
+            // 适配手机端，隐藏菜单栏
+            let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+            if(w < 576){
+                this.isShow = false;
+            }
         }
     }
 </script>
 
 <style scoped>
 .layout{
-    border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
     border-radius: 4px;
@@ -74,6 +113,12 @@
     position: relative;
     top: 15px;
     left: 20px;
+}
+.layout-menu{
+    float: right;
+    position: relative;
+    top: 0px;
+    right: 20px;
 }
 .layout-nav{
     width: 420px;

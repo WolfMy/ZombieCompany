@@ -1,6 +1,6 @@
 <template>
 <div class="BasicInformation">
-    <Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
+    <Breadcrumb style="text-align:left;margin:0px;">
         <BreadcrumbItem>
             数据可视化
         </BreadcrumbItem>
@@ -356,6 +356,9 @@ export default {
             ]
             var option3 = {
                 color:color,
+                title: {
+                    subtext: '注：数据来自验证集中僵尸企业分布'
+                },
                 grid: {
                     right: 10,
                     top: 135,
@@ -418,7 +421,7 @@ export default {
             var option4 = {
                 color: color,
                     title: {
-                        subtext: '验证集中2000年到2014年公司注册数量'
+                        subtext: '注：数据来自验证集中2000年到2014年公司注册数量'
                     },
                 xAxis: {
                     data: dataAxis,

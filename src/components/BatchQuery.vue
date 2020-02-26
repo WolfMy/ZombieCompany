@@ -91,7 +91,7 @@
                     </Form>
                 </Col>
                 <Col :md="16" :xs="24" style="margin:16px 0px;">
-                    <Table :data="tableData1" :columns="tableColumns1" stripe max-height="450"></Table>
+                    <Table :data="tableData1" :columns="tableColumns1" stripe max-height="470"></Table>
                 </Col>
             </Row>
             <br>

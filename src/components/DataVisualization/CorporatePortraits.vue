@@ -13,7 +13,7 @@
         <Col :md="6" :xs="24">
             <Card dis-hover :padding="16">
                 <h2 slot="title" style="text-align:left;">
-                    公司信息
+                    3-1 公司信息
                 </h2>
                 <template slot="extra">
                     <Tag color="green">著作权</Tag>
@@ -62,11 +62,19 @@
                 </List>
             </Card>
         </Col>
+        <Col :md="4" :xs="24" offset="14">
+            <Input size="large" search enter-button placeholder="请输入企业ID">
+                <!--Button slot="append" icon="ios-search" -->
+            </Input>
+        </Col>
     </Row>
     <Card dis-hover :padding="16" style="margin:16px 0px;">
-        <!--h2 slot="title" style="text-align:left">
-            1
-        </h2-->
+        <h2 slot="title" style="text-align:left">
+            3-2 当前企业各指标分布情况
+        </h2>
+        <Poptip word-wrap width="300" slot="extra" content="展示当前企业在整体企业中的情况。我们分别统计了十五个与僵尸企业强相关的特征在数据集中的平均值，并加入当前企业进行对比。" placement="left">
+            <Button size="small" type="info">说明</Button>
+        </Poptip>
         <div id="demo3" style="height:550px;"></div>
     </Card>
 </div>
@@ -97,7 +105,7 @@ export default {
                     left: 10
                 },
                 brush: {
-                    toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+                    toolbox: [''],
                     xAxisIndex: 0
                 },
                 toolbox: {

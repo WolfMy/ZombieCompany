@@ -6,24 +6,30 @@
         </BreadcrumbItem>
         <BreadcrumbItem>
             <Icon type="ios-analytics" />
-            关联性探索
+            数据关联性探索
         </BreadcrumbItem>
     </Breadcrumb>
     <Row :gutter="16" type="flex" align="middle" style="margin:0px -16px;">
         <Col :md="15" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <h2 slot="title" style="text-align:left">
-                    各企业注册时间与僵尸企业的数量关系
+                    2-1 注册时间与僵尸企业的关联
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="探索了“注册时间”与“能否成为僵尸企业”之间的关系。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo1" style="height:400px;"></div>
             </Card>
         </Col>
         <Col :md="9" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
-                <!--h2 slot="title" style="text-align:left">
-                    4
-                </h2-->
-                <div id="demo4" style="height:449px;"></div>
+                <h2 slot="title" style="text-align:left">
+                    2-2 知识产权数量与僵尸企业的关联
+                </h2>
+                <Poptip word-wrap width="300" slot="extra" content="探索“知识产权相关的特征”与“能否成为僵尸企业”之间的关系。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
+                <div id="demo4" style="height:400px;"></div>
             </Card>
         </Col>
     </Row>
@@ -31,26 +37,35 @@
         <Col :md="10" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
                 <h2 slot="title" style="text-align:left">
-                    三年企业纳税情况
+                    2-3 企业三年纳税总额
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="探索了“企业三年纳税情况”与“是否被认为是僵尸企业”的相关性。将三年纳税的数量直接对应三维坐标轴上的值，僵尸企业与非僵尸企业的数据分布呈现明显不同。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo2" style="height:500px;"></div>
             </Card>
         </Col>
         <Col :md="14" :xs="24" style="margin:16px 0px;">
             <Card dis-hover>
-                <!--h2 slot="title" style="text-align:left">
-                    3
-                </h2-->
-                <div id="demo3" style="height:549px;"></div>
+                <h2 slot="title" style="text-align:left">
+                    2-4 各特征与僵尸企业的关联
+                </h2>
+                <Poptip word-wrap width="300" slot="extra" content="探究验证集中企业基本信息表各特征与“是否被认为是僵尸企业”之间的相关性。可以看到各维度下的各种分类占比都比较均匀，僵尸企业和非僵尸企业下数据的分布没有明显的差异性。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
+                <div id="demo3" style="height:500px;"></div>
             </Card>
         </Col>
     </Row>
     <Row style="margin:0px -10px;">
         <Col span="24">
             <Card dis-hover>
-                <!--h2 slot="title" style="text-align:left">
-                    5
-                </h2-->
+                <h2 slot="title" style="text-align:left">
+                    2-5 年报表各特征相关性分析
+                </h2>
+                <Poptip word-wrap width="300" slot="extra" content="展示了验证集中年报（year_report）表中各特征之间的皮尔逊系数热力图。绝对值越大、颜色越深表示相关性越高，其中1表示完全正相关，-1表示完全负相关。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo5" style="height:500px;"></div>
             </Card>
         </Col>

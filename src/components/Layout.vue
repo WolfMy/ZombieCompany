@@ -3,6 +3,7 @@
         <Layout>
             <Header>
                 <img class="layout-logo" src="logo.png">
+                <!--p style="color:#fff;position:fixed;left:7%;font-size=32px;">僵尸企业智能预测</p-->
                 <Menu v-show="isShow" class="layout-menu" theme="dark" mode="horizontal" style="text-align:left;">
                     <MenuItem name="0" to="/Home">
                         <Icon type="ios-home" />
@@ -10,20 +11,20 @@
                     </MenuItem>
                     <MenuItem name="1-1"  to="/BatchQuery">
                         <Icon type="ios-search" />
-                        批量查询
+                        僵尸企业智能预测
                     </MenuItem>
                     <Submenu name="DataVisualization">
                         <template slot="title">
                             <Icon type="ios-analytics" />
-                            数据可视化
+                            数据可视化展示
                         </template>
                         <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
                             <Icon type="ios-information-circle-outline" />
-                            基本信息
+                            数据分布可视化
                         </MenuItem>
                         <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
                             <Icon type="ios-analytics" />
-                            关联性探索
+                            数据关联性探索
                         </MenuItem>
                         <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
                             <Icon type="ios-reverse-camera" />
@@ -48,17 +49,17 @@
                         <MenuGroup title="系统菜单">
                             <MenuItem name="1-1"  to="/BatchQuery">
                                 <Icon type="ios-search" />
-                                批量查询
+                                僵尸企业智能预测
                             </MenuItem>
                         </MenuGroup>
-                        <MenuGroup title="数据可视化">
+                        <MenuGroup title="数据可视化展示">
                             <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
                                 <Icon type="ios-information-circle-outline" />
-                                基本信息
+                                数据分布可视化
                             </MenuItem>
                             <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
                                 <Icon type="ios-analytics" />
-                                关联性探索
+                                数据关联性探索
                             </MenuItem>
                             <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
                                 <Icon type="ios-reverse-camera" />

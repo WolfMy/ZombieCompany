@@ -2,27 +2,33 @@
 <div class="BasicInformation">
     <Breadcrumb style="text-align:left;margin:0px;">
         <BreadcrumbItem>
-            数据可视化
+            数据可视化展示
         </BreadcrumbItem>
         <BreadcrumbItem>
             <Icon type="ios-information-circle-outline" />
-            基本信息
+            数据分布可视化
         </BreadcrumbItem>
     </Breadcrumb>
     <Row :gutter="16" style="margin:0px -16px;">
         <Col :md="14" :xs="24" style="margin:16px 0px;">
             <Card dis-hover :padding="8">
                 <h2 slot="title" style="text-align:left">
-                    基础数据
+                    1-1 缺失值数量
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="验证集所给出的四个表中各特征的缺失情况，可以看到除企业ID外均出现一定程度数据缺失的情况。对于数据的缺失，我们将根据不同数据自身的特性，使用合适方法进行填充。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo1" style="height:500px;"></div>
             </Card>
         </Col>
         <Col :md="10" :xs="24" style="margin:16px 0px;">
             <Card dis-hover :padding="8">
                 <h2 slot="title" style="text-align:left">
-                    中国僵尸企业分布
+                    1-2 僵尸企业分布
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="展示了验证集所提供数据中，僵尸企业在中国地图上的数量和分布情况。个省份僵尸企业数量集中在1200-1300之间，数量差异较小。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo3" style="height:500px;"></div>
             </Card>
         </Col>
@@ -31,16 +37,22 @@
         <Col :md="8" :xs="24" style="margin:16px 0px;">
             <Card dis-hover style="text-align:left" :padding="24">
                 <h2 slot="title">
-                    每年注册公司数量
+                    1-3 每年注册公司数量
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="展示了验证集提供的企业数据中，从2000年到2014年每年的公司注册数量。可以看到每年的注册数量比较平均，在2000家附近小幅度波动。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo4" style="height:400px;"></div>
             </Card>
         </Col>
         <Col :md="16" :xs="24" style="margin:16px 0px;">
             <Card dis-hover style="text-align:left" :padding="24">
                 <h2 slot="title">
-                    各数量占比
+                    1-4 各特征企业数量占比
                 </h2>
+                <Poptip word-wrap width="300" slot="extra" content="展示了验证集提供的基本信息表中企业所属行业、企业类型、控制人类型、所在区域四个特征中各类别数量占比情况。可以看到各个特征中各自的类别数量占比情况比较均匀。" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
                 <div id="demo2" style="height:400px;"></div>
             </Card>
         </Col>
@@ -356,9 +368,6 @@ export default {
             ]
             var option3 = {
                 color:color,
-                title: {
-                    subtext: '注：数据来自验证集中僵尸企业分布'
-                },
                 grid: {
                     right: 10,
                     top: 135,

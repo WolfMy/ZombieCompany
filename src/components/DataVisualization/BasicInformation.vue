@@ -429,9 +429,6 @@ export default {
             }
             var option4 = {
                 color: color,
-                    title: {
-                        subtext: '注：数据来自验证集中2000年到2014年公司注册数量'
-                    },
                 xAxis: {
                     data: dataAxis,
                     axisLabel: {

@@ -9,8 +9,8 @@
             僵尸企业画像
         </BreadcrumbItem>
     </Breadcrumb>
-    <Row style="margin:16px 0px 0px;">
-        <Col :md="6" :xs="24">
+    <Row type="flex">
+        <Col :md="{span:6, order:1}" :xs="{span:24, order:2}" style="margin:16px 0px 0px;">
             <Card dis-hover :padding="16">
                 <h2 slot="title" style="text-align:left;">
                     3-1 公司信息
@@ -62,7 +62,7 @@
                 </List>
             </Card>
         </Col>
-        <Col :md="4" :xs="24" offset="14">
+        <Col :md="{span:4, offset:14}" :xs="{span:24, order:1}">
             <Input size="large" search enter-button placeholder="请输入企业ID">
                 <!--Button slot="append" icon="ios-search" -->
             </Input>

@@ -20,7 +20,7 @@
                         <br>
                         <FormItem label="基本信息：">
                             <Upload 
-                                :action="this.$api_baseUrl+'Upload'" 
+                                :action="this.UploadURL"
                                 ref="base" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,1)" 
@@ -37,7 +37,7 @@
                         </FormItem>
                         <FormItem label="知识产权：">
                             <Upload
-                                :action="this.$api_baseUrl+'Upload'" 
+                                :action="this.UploadURL"
                                 ref="paient_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,2)" 
@@ -54,7 +54,7 @@
                         </FormItem>
                         <FormItem label="年报：">
                             <Upload
-                                :action="this.$api_baseUrl+'Upload'" 
+                                :action="this.UploadURL"
                                 ref="year_report" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,3)" 
@@ -71,7 +71,7 @@
                         </FormItem>
                         <FormItem label="融资信息：">
                             <Upload
-                                :action="this.$api_baseUrl+'Upload'" 
+                                :action="this.UploadURL"
                                 ref="money_info" 
                                 :data="this.UploadParams"
                                 :before-upload="(file)=>beforeUpload(file,4)" 
@@ -106,6 +106,7 @@ import Axios from 'axios'
 export default {
     data() {
         return {
+            UploadURL: process.env.VUE_APP_API_URL+'Upload',
             base: '',
             paient_info: '',
             year_report: '',
@@ -201,7 +202,7 @@ export default {
             return yy+'-'+mm+'-'+dd+'-'+hh+mf+ss
         },
         getBatchRecord() {
-            Axios.get('/api/getBatchRecord').then((res)=>{
+            Axios.get('getBatchRecord').then((res)=>{
                 this.tableData1 = res.data
             })
         },
@@ -286,7 +287,7 @@ export default {
         },
         updatePredictState(filepath){
             //console.log('执行定时任务')
-            var api = '/api/getPredictState/' + filepath
+            var api = 'getPredictState/' + filepath
             Axios.get(api).then((res)=> {
                 //console.log(res.data)
                 if(res.data=='True'){
@@ -296,7 +297,7 @@ export default {
             })
         },
         download(filepath) {
-            var url = '/api/Download/' + filepath
+            var url = process.env.VUE_APP_API_URL + 'Download/' + filepath
             let a = document.createElement('a')
             a.href = url
             a.click();
@@ -314,7 +315,7 @@ export default {
             var data = {
                 FilePath: filepath
             }
-            Axios.post('/api/Delete', data).then((res)=>{
+            Axios.post('Delete', data).then((res)=>{
                 this.getBatchRecord()
             })
         }

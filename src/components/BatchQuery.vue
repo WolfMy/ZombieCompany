@@ -201,8 +201,7 @@ export default {
             return yy+'-'+mm+'-'+dd+'-'+hh+mf+ss
         },
         getBatchRecord() {
-            var api = this.$api_baseUrl + 'getBatchRecord'
-            Axios.get(api).then((res)=>{
+            Axios.get('/api/getBatchRecord').then((res)=>{
                 this.tableData1 = res.data
             })
         },
@@ -287,7 +286,7 @@ export default {
         },
         updatePredictState(filepath){
             //console.log('执行定时任务')
-            var api = this.$api_baseUrl + 'getPredictState/' + filepath
+            var api = '/api/getPredictState/' + filepath
             Axios.get(api).then((res)=> {
                 //console.log(res.data)
                 if(res.data=='True'){
@@ -297,7 +296,7 @@ export default {
             })
         },
         download(filepath) {
-            var url = this.$api_baseUrl + 'Download/' + filepath
+            var url = '/api/Download/' + filepath
             let a = document.createElement('a')
             a.href = url
             a.click();
@@ -312,11 +311,10 @@ export default {
                     });
         },
         delete(filepath) {
-            var api = this.$api_baseUrl + 'Delete'
             var data = {
                 FilePath: filepath
             }
-            Axios.post(api, data).then((res)=>{
+            Axios.post('/api/Delete', data).then((res)=>{
                 this.getBatchRecord()
             })
         }

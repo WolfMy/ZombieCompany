@@ -3,6 +3,23 @@ module.exports = {
     productionSourceMap: false,
     outputDir: 'docs',
     publicPath:'./',
+    devServer: {
+      open: true, //是否自动弹出浏览器页面
+      host: "localhost", 
+      port: '8080',
+      https: false,
+      hotOnly: false, 
+      proxy: {
+          '/api': {
+              target: 'http://120.27.192.52:8081', //API服务器的地址
+              ws: true,  //代理websockets
+              changeOrigin: true, // 虚拟的站点需要更管origin
+              pathRewrite: {   //重写路径
+                  '^/api': ''
+              }
+          }
+      },
+    },
     chainWebpack: config => {
       // ============压缩图片 start============
       config.module

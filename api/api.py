@@ -52,6 +52,7 @@ class BatchRecord(db.Model):
     FilePath = db.Column(db.String(20), nullable=False)
     PredictState = db.Column(db.Integer, nullable=False, default=0) # 0:预测中  1:预测成功  2:错误
 
+'''这2个接口为单次查询API，废弃
 @app.route('/SingleInput', methods=['POST'])
 def SingleInput():
     data = request.get_json()
@@ -92,7 +93,7 @@ def getCompanyInfo():
         companys_list.append(company)
     #print(companys_list)
     return json.dumps(companys_list)
-
+'''
 '''使用线程池回调函数，解决了预测完成后的数据库预测状态更新的问题
 def updatePredictState():
     #print('开始执行定时任务')

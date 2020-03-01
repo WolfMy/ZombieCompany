@@ -1,6 +1,8 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 module.exports = {
     productionSourceMap: false,
+    outputDir: 'docs',
+    publicPath:'./',
     chainWebpack: config => {
       // ============压缩图片 start============
       config.module

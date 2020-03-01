@@ -1,4 +1,4 @@
-# zombie_company
+# ZombieCompany
 
 ## Project setup
 ```

@@ -367,7 +367,7 @@ export default {
                 }
             ]
             var option3 = {
-                color:color,
+                color: ["#5bc49f", "#feb64d", "#9287e7", "#ff7c7c"],
                 grid: {
                     right: 10,
                     top: 135,
@@ -384,9 +384,8 @@ export default {
                     max: 1300,
                     left: 'left',
                     top: 'bottom',
-                    text: ['高', '低'], 
+                    text: ['高', '低'],
                     calculable: true,
-                    color:color
                 },
                 series: [{
                     zlevel: 1,
@@ -396,22 +395,22 @@ export default {
                     selectedMode: 'multiple',
                     roam: "move",
                     scaleLimit: {
-                        min: 0.5,
-                        max: 0.85,
+                    min: 0.5,
+                    max: 0.85,
                     },
                     zoom: 0.75,
                     left: 0,
                     right: '10%',
                     label: {
-                        normal: {
-                            show: true
-                        },
-                        emphasis: {
-                            show: true
-                        }
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        show: true
+                    }
                     },
                     data: data3
-                }, ]
+                },]
             };
             myChart3.setOption(option3);
 

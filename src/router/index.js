@@ -30,6 +30,11 @@ const routes = [
     component: () => import('@/components/DataVisualization/CorporatePortraits.vue')
   },
   {
+    path: '/DataVisualization/ModelTraining',
+    name: 'ModelTraining',
+    component: () => import('@/components/DataVisualization/ModelTraining.vue')
+  },
+  {
     // 默认跳转
     path: '*',
     redirect: '/Home'

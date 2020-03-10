@@ -9,8 +9,8 @@
             僵尸企业画像
         </BreadcrumbItem>
     </Breadcrumb>
-    <Row type="flex">
-        <Col :md="{span:6, order:1}" :xs="{span:24, order:2}" style="margin:16px 0px 0px;">
+    <Row type="flex" :gutter="16">
+        <Col :md="{span:6,order:1}" :xs="{span:24,order:2}" style="margin:16px 0px 0px;">
             <Card dis-hover :padding="16">
                 <h2 slot="title" style="text-align:left;">
                     3-1 公司信息
@@ -30,14 +30,14 @@
                     <Cell title="区域" extra="福建" />
                     <Cell title="企业类型" extra="农民专业合作社" />
                 </CellGroup-->
-                <List style="text-align:left;">
+                <List style="text-align:left;height:400px">
                     <ListItem>
                         <ListItemMeta title="ID" />
                         <template slot="extra">28</template>
                     </ListItem>
                     <ListItem>
                         <ListItemMeta title="是否僵尸企业" />
-                        <template slot="extra">是</template>
+                        <template slot="extra"><Tag color="error">是</Tag></template>
                     </ListItem>
                     <ListItem>
                         <ListItemMeta title="注册时间" />
@@ -62,15 +62,26 @@
                 </List>
             </Card>
         </Col>
-        <Col :md="{span:4, offset:14}" :xs="{span:24, order:1}">
-            <Input size="large" search enter-button placeholder="请输入企业ID">
+        <Col :md="{span:10,order:2}" :xs="{span:24,order:3}">
+            <Card dis-hover :padding="16" style="margin:16px 0px;">
+                <h2 slot="title" style="text-align:left">
+                    3-2 TSNE数据可视化
+                </h2>
+                <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
+                    <Button size="small" type="info">说明</Button>
+                </Poptip>
+                <div id="demo4" style="height:400px;"></div>
+            </Card>
+        </Col>
+        <Col :md="{span:6,offset:2,order:3}" :xs="{span:24,order:1}">
+            <Input size="large" search enter-button placeholder="请输入企业ID"  style="margin:16px 0px;">
                 <!--Button slot="append" icon="ios-search" -->
             </Input>
         </Col>
     </Row>
     <Card dis-hover :padding="16" style="margin:16px 0px;">
         <h2 slot="title" style="text-align:left">
-            3-2 当前企业各指标分布情况
+            3-3 当前企业各指标分布情况
         </h2>
         <Poptip word-wrap width="300" slot="extra" content="展示当前企业在整体企业中的情况。我们分别统计了十五个与僵尸企业强相关的特征在数据集中的平均值，并加入当前企业进行对比。" placement="left">
             <Button size="small" type="info">说明</Button>
@@ -81,6 +92,7 @@
 </template>
 <script>
 import Axios from 'axios';
+import 'echarts-gl';
 export default {
     mounted() {
         this.initCharts()
@@ -265,9 +277,68 @@ export default {
                         ],
                         color: color[4],
                     },
-                ]
-            };
-            myChart3.setOption(option3);
+                    ]
+                };
+                myChart3.setOption(option3);
+
+                Axios.get("http://120.27.192.52:5555/data/prediction.json").then((res)=>{
+                    var myChart4 = this.$echarts.init(document.getElementById('demo4'), "light");
+                    var option4 = {
+                        color: ["#ff7c7c", "#5bc49f", "#feb64d", "#9287e7"],
+                        tooltip: {
+                        trigger: "item",
+                        },
+                        grid3D: {},
+                        xAxis3D: {
+                        axisLine: {
+                        }
+
+                        },
+                        yAxis3D: {
+
+                        },
+                        zAxis3D: {
+
+                        },
+                        legend: {
+                        textStyle: {
+                            fontSizee: 20
+                        },
+                        data: ['非僵尸企业', '僵尸企业', '当前企业'],
+                        top: 2
+                        },
+                        series: [{
+                        type: 'scatter3D',
+                        symbolSize: 4,
+                        coordinateSystem: 'cartesian3D',
+                        name: "非僵尸企业",
+                        data: res.data[1],
+                        itemStyle: {
+                            color: '#60acfc'
+                        },
+                        },
+                        {
+                        type: 'scatter3D',
+                        symbolSize: 4,
+                        name: "僵尸企业",
+                        data: res.data[0],
+                        itemStyle: {
+                            color: '#ff7c7c'
+                        }
+                        },
+                        {
+                        type: 'scatter3D',
+                        symbolSize: 12,
+                        name: "当前企业",
+                        data: [[0.759936092486962, 2.037291155884674, 1.017753063736564]],
+                        itemStyle: {
+                            color: '#282c34'
+                        }
+                        }
+                        ]
+                    };
+                    myChart4.setOption(option4);
+                });
             }
     }
 }

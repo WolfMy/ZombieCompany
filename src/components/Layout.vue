@@ -10,16 +10,16 @@
                             首页
                     </MenuItem>
                     <MenuItem name="1-1"  to="/BatchQuery">
-                        <Icon type="ios-search" />
+                        <Icon type="ios-ionitron" />
                         僵尸企业智能预测
                     </MenuItem>
                     <Submenu name="DataVisualization">
                         <template slot="title">
-                            <Icon type="ios-analytics" />
+                            <Icon type="ios-podium" />
                             数据可视化展示
                         </template>
                         <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
-                            <Icon type="ios-information-circle-outline" />
+                            <Icon type="ios-pie" />
                             数据分布可视化
                         </MenuItem>
                         <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
@@ -29,6 +29,10 @@
                         <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
                             <Icon type="ios-reverse-camera" />
                             僵尸企业画像
+                        </MenuItem>
+                        <MenuItem name="2-4" to="/DataVisualization/ModelTraining">
+                            <Icon type="ios-flask" />
+                            模型训练可视化
                         </MenuItem>
                     </Submenu>
                 </Menu>
@@ -48,13 +52,13 @@
                         </MenuItem>
                         <MenuGroup title="系统菜单">
                             <MenuItem name="1-1"  to="/BatchQuery">
-                                <Icon type="ios-search" />
+                                <Icon type="ios-ionitron" />
                                 僵尸企业智能预测
                             </MenuItem>
                         </MenuGroup>
                         <MenuGroup title="数据可视化展示">
                             <MenuItem name="2-1" to="/DataVisualization/BasicInformation">
-                                <Icon type="ios-information-circle-outline" />
+                                <Icon type="ios-pie" />
                                 数据分布可视化
                             </MenuItem>
                             <MenuItem name="2-2" to="/DataVisualization/RelevanceExplore">
@@ -64,6 +68,10 @@
                             <MenuItem name="2-3" to="/DataVisualization/CorporatePortraits">
                                 <Icon type="ios-reverse-camera" />
                                 僵尸企业画像
+                            </MenuItem>
+                            <MenuItem name="2-4" to="/DataVisualization/ModelTraining">
+                                <Icon type="ios-flask" />
+                                模型训练可视化
                             </MenuItem>
                         </MenuGroup>
                     </Menu>   

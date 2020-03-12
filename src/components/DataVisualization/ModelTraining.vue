@@ -18,11 +18,7 @@
                 <List style="text-align:left;height:400px;">
                     <ListItem>
                         <ListItemMeta title="模型名称" />
-                        <template slot="extra">28</template>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemMeta title="CatBoostClassifier" />
-                        <template slot="extra"><Tag color="success">是</Tag></template>
+                        <template slot="extra">CatBoostClassifier</template>
                     </ListItem>
                     <ListItem>
                         <ListItemMeta title="Iterations" />

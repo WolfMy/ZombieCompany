@@ -6,7 +6,8 @@ import json, os, shutil, time, datetime
 from werkzeug.utils import secure_filename
 
 from concurrent.futures import ThreadPoolExecutor
-from model.model import predict
+#from oldModel.model import predict
+from model.predict_data import predict
 executor = ThreadPoolExecutor(1)
 
 '''
@@ -144,7 +145,7 @@ def Upload():
         db.session.add(record)
         db.session.commit()
 
-        MODEL_PATH = os.path.join(os.path.join(os.path.dirname(__file__), "model"), "ModelXgboost.plk")
+        MODEL_PATH = os.path.join(os.path.join(os.path.dirname(__file__), "model"), "verify_catboost.m")
         # 异步对文件进行预测
         global CurrentFilePath
         CurrentFilePath = filepath

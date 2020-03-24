@@ -2,16 +2,13 @@
 <div class="batchquery">
 <Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
     <BreadcrumbItem>
-        系统菜单
-    </BreadcrumbItem>
-    <BreadcrumbItem>
-        <Icon type="ios-search" />
-        批量查询
+        <Icon type="ios-ionitron" />
+        僵尸企业智能检测
     </BreadcrumbItem>
 </Breadcrumb>
 <Card dis-hover>
     <Tabs value="name1">
-        <TabPane label="批量查询" name="name1">
+        <TabPane label="单次/批量查询" name="name1">
             <br>
             <Row type="flex" justify="space-around" align="top">
                 <Col :md="6" :xs="24" style="text-align:left;margin:16px 0px;">

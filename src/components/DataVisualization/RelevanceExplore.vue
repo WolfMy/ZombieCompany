@@ -103,16 +103,10 @@ export default {
                 },
                 "grid": {
                     "borderWidth": 0,
-                    "top": 110,
-                    "bottom": 95,
                 },
                 "legend": {
-                    x: '4%',
-                    top: '8%',
                     "data": ['僵尸企业', '非僵尸企业', '平均']
                 },
-
-
                 "calculable": true,
                 "xAxis": [{
                     "type": "category",
@@ -128,16 +122,9 @@ export default {
                     "xAxisIndex": [
                         0
                     ],
-                    bottom: 30,
                     "start": 10,
                     "end": 80,
                     handleSize: '110%',
-                }, {
-                    "type": "inside",
-                    "show": true,
-                    "height": 15,
-                    "start": 1,
-                    "end": 35
                 }],
                 "series": [{
                         "name": "僵尸企业",
@@ -481,6 +468,7 @@ export default {
                     data: ['验证集僵尸', '验证集非僵尸', '训练集僵尸']
                 },
                 radar: {
+                    center: ['50 %', '60 %'],
                     indicator: [{
                             text: '有著作权',
                             max: 40

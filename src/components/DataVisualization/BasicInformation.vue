@@ -368,12 +368,6 @@ export default {
             ]
             var option3 = {
                 color: ["#5bc49f", "#feb64d", "#9287e7", "#ff7c7c"],
-                grid: {
-                    right: 10,
-                    top: 135,
-                    bottom: 100,
-                    width: '20%'
-                },
                 tooltip: {
                     trigger: 'item',
                     formatter: '{b}<br/>数量: {c}'
@@ -389,25 +383,24 @@ export default {
                 },
                 series: [{
                     zlevel: 1,
-                    name: '中国僵尸企业分布',
                     type: 'map',
                     mapType: 'china',
                     selectedMode: 'multiple',
                     roam: "move",
                     scaleLimit: {
-                    min: 0.5,
-                    max: 0.85,
+                        min: 0.5,
+                        max: 0.85,
                     },
                     zoom: 0.75,
                     left: 0,
                     right: '10%',
                     label: {
-                    normal: {
-                        show: true
-                    },
-                    emphasis: {
-                        show: true
-                    }
+                        normal: {
+                            show: true
+                        },
+                        emphasis: {
+                            show: true
+                        }
                     },
                     data: data3
                 },]
@@ -455,7 +448,10 @@ export default {
                     }
                 },
                 dataZoom: [{
-                    type: 'inside'
+                    "show": true,
+                    //type: 'inside',
+                    start: 30,
+                    end: 65
                 }],
                 series: [{ // For shadow
                         type: 'bar',

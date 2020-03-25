@@ -15,7 +15,7 @@
                 <h2 slot="title" style="text-align:left;">
                     4-1 模型信息
                 </h2>
-                <List style="text-align:left;height:400px;">
+                <List style="text-align:left;height:500px;">
                     <ListItem>
                         <ListItemMeta title="模型名称" />
                         <template slot="extra">CatBoostClassifier</template>
@@ -43,7 +43,7 @@
                 <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
                     <Button size="small" type="info">说明</Button>
                 </Poptip>
-                <div id="demo5" style="height:400px;"></div>
+                <div id="demo5" style="height:500px;"></div>
             </Card>
         </Col>
     </Row>
@@ -78,9 +78,6 @@ export default {
                     }
 
                 },
-                grid: {
-                    right: '20%'
-                },
                 toolbox: {
                     feature: {
                     }
@@ -112,17 +109,17 @@ export default {
                 ],
                 dataZoom: [
                     {
-                    type: 'slider',
-                    show: true,
-                    xAxisIndex: 0,
-                    start: 0,
-                    end: 20,
-                    handleSize: 2
+                        type: 'slider',
+                        show: true,
+                        xAxisIndex: 0,
+                        start: 0,
+                        end: 40,
+                        handleSize: 2
                     },
                     {
-                    type: 'inside',
-                    start: 0,
-                    end: 20
+                        type: 'inside',
+                        start: 0,
+                        end: 40
                     },
                 ],
                 yAxis: [
@@ -230,7 +227,6 @@ export default {
                     },
                     }
                 },
-
                 "title": {
                     // "text": "南丁格尔玫瑰图--PieHalfRose",
                     // "left": "center",

@@ -71,15 +71,18 @@
                 <Input size="large" @on-search="searchID" search enter-button placeholder="请输入企业ID"  style="margin:16px 0px;" />
             </Row>
             <Row>
-                <Card dis-hover :padding="16" style="margin:16px 0px;">
-                <div id="demo1" style="height:375px;"></div>
+                <Card dis-hover :padding="16">
+                    <h2 slot="title" style="text-align:left">
+                        3-3 
+                    </h2>
+                    <div id="demo1" style="height:345px;"></div>
                 </Card>
             </Row>
         </Col>
     </Row>
     <Card dis-hover :padding="16" style="margin:16px 0px;">
         <h2 slot="title" style="text-align:left">
-            3-3 当前企业各指标分布情况
+            3-4 当前企业各指标分布情况
         </h2>
         <Poptip word-wrap width="300" slot="extra" content="展示当前企业在整体企业中的情况。我们分别统计了十五个与僵尸企业强相关的特征在数据集中的平均值，并加入当前企业进行对比。" placement="left">
             <Button size="small" type="info">说明</Button>
@@ -188,34 +191,35 @@ export default {
             var option1 = {
                 tooltip: {},
                 legend: {
-                data: ["当前企业"],
+                    data: ["当前企业"],
+                
                 },
                 radar: {
-                center: ['50 %', '65 %'],
-                name: {
-                    textStyle: {
-                    fontSize: 12,
-                    // fontWeight: 'bold'
-                    }
-                },
-                indicator: [{
-                    text: '专利',
-                    max: 2,
-                    min: -0.5
-                },
-                {
-                    name: '商标',
-                    max: 2,
-                    min: -0.5
+                    center: ['50 %', '60 %'],
+                    name: {
+                        textStyle: {
+                        fontSize: 12,
+                        // fontWeight: 'bold'
+                        }
+                    },
+                    indicator: [{
+                        text: '专利',
+                        max: 2,
+                        min: -0.5
+                    },
+                    {
+                        name: '商标',
+                        max: 2,
+                        min: -0.5
 
-                },
-                {
-                    name: '著作权',
-                    max: 2,
-                    min: -0.5
+                    },
+                    {
+                        name: '著作权',
+                        max: 2,
+                        min: -0.5
 
-                },
-                ]
+                    },
+                    ]
                 },
                 series: [{
                 type: 'radar',
@@ -237,17 +241,16 @@ export default {
             var option3 = {
                 color: color,
                 legend: {
-                data: ['验证集僵尸平均', '验证集非僵尸平均', '训练集僵尸平均', '当前企业'],
-                left: 10
+                    data: ['验证集僵尸平均', '验证集非僵尸平均', '训练集僵尸平均', '当前企业'],
                 },
                 brush: {
-                toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-                xAxisIndex: 0
+                    toolbox: ['rect'],
+                    xAxisIndex: 0
                 },
                 toolbox: {
                 feature: {
                     magicType: {
-                    type: ['stack', 'tiled']
+                        type: ['stack', 'tiled']
                     },
                     dataView: {}
                 }
@@ -274,14 +277,14 @@ export default {
                 },
                 },
                 dataZoom: [{
-                show: true,
-                start: 0,
-                end: 100
+                    show: true,
+                    start: 0,
+                    end: 100
                 },
                 {
                 type: 'inside',
-                start: 0,
-                end: 100
+                    start: 0,
+                    end: 100
                 },
                 ],
                 xAxis: {
@@ -314,7 +317,8 @@ export default {
                 },
                 },
                 grid: {
-                left: 100
+                    left: '5%',
+                    right: '3%'
                 },
                 series: [{
                 name: '验证集僵尸平均',
@@ -394,9 +398,11 @@ export default {
                 var option4 = {
                     color: ["#ff7c7c", "#5bc49f", "#feb64d", "#9287e7"],
                     tooltip: {
-                    trigger: "item",
+                        trigger: "item",
                     },
-                    grid3D: {},
+                    grid3D: {
+                        top: 'top'
+                    },
                     xAxis3D: {
                     axisLine: {
                     }
@@ -409,39 +415,39 @@ export default {
 
                     },
                     legend: {
-                    textStyle: {
-                        fontSizee: 20
-                    },
-                    data: ['非僵尸企业', '僵尸企业', '当前企业'],
-                    top: 2
+                        textStyle: {
+                            fontSizee: 20
+                        },
+                        data: ['非僵尸企业', '僵尸企业', '当前企业'],
+                        top: 0
                     },
                     series: [{
-                    type: 'scatter3D',
-                    symbolSize: 4,
-                    coordinateSystem: 'cartesian3D',
-                    name: "非僵尸企业",
-                    data: res.data[1],
-                    itemStyle: {
-                        color: '#60acfc'
-                    },
-                    },
-                    {
-                    type: 'scatter3D',
-                    symbolSize: 4,
-                    name: "僵尸企业",
-                    data: res.data[0],
-                    itemStyle: {
-                        color: '#ff7c7c'
-                    }
+                        type: 'scatter3D',
+                        symbolSize: 4,
+                        coordinateSystem: 'cartesian3D',
+                        name: "非僵尸企业",
+                        data: res.data[1],
+                        itemStyle: {
+                            color: '#60acfc'
+                        },
                     },
                     {
-                    type: 'scatter3D',
-                    symbolSize: 12,
-                    name: "当前企业",
-                    data: this.clusterData[this.currentID],
-                    itemStyle: {
-                        color: '#282c34'
-                    }
+                        type: 'scatter3D',
+                        symbolSize: 4,
+                        name: "僵尸企业",
+                        data: res.data[0],
+                        itemStyle: {
+                            color: '#ff7c7c'
+                        }
+                    },
+                    {
+                        type: 'scatter3D',
+                        symbolSize: 12,
+                        name: "当前企业",
+                        data: this.clusterData[this.currentID],
+                        itemStyle: {
+                            color: '#282c34'
+                        }
                     }
                     ]
                 };

@@ -15,11 +15,11 @@
                 <h2 slot="title" style="text-align:left;">
                     3-1 公司信息
                 </h2>
-                <template slot="extra">
+                <!--template slot="extra">
                     <Tag color="green">著作权</Tag>
                     <Tag color="blue">商标</Tag>
                     <Tag color="geekblue">专利</Tag>
-                </template>
+                </template-->
                 <List style="text-align:left;height:400px">
                     <ListItem>
                         <ListItemMeta title="ID" />
@@ -66,8 +66,15 @@
                 <div id="demo4" style="height:400px;"></div>
             </Card>
         </Col>
-        <Col :md="{span:6,offset:2,order:3}" :xs="{span:24,order:1}">
-            <Input size="large" @on-search="searchID" search enter-button placeholder="请输入企业ID"  style="margin:16px 0px;" />
+        <Col :md="{span:8,order:3}" :xs="{span:24,order:1}">
+            <Row>
+                <Input size="large" @on-search="searchID" search enter-button placeholder="请输入企业ID"  style="margin:16px 0px;" />
+            </Row>
+            <Row>
+                <Card dis-hover :padding="16" style="margin:16px 0px;">
+                <div id="demo1" style="height:375px;"></div>
+                </Card>
+            </Row>
         </Col>
     </Row>
     <Card dis-hover :padding="16" style="margin:16px 0px;">
@@ -89,16 +96,16 @@ export default {
         return {
             currentID: 1500001,
             companyInfo: {
-                1500001:{ 'ID': 1500001, 'isZombie': '是', 'registerTime': 2010, 'registerMoney': '6680', 'controlType': '自然人', 'area': '山东', 'companyType': '股份有限公司' },
-                1500321:{ 'ID': 1500321, 'isZombie': '是', 'registerTime': 2001, 'registerMoney': '9330', 'controlType': '企业法人', 'area': '广东', 'companyType': '股份有限公司' },
-                1507545:{ 'ID': 1507545, 'isZombie': '是', 'registerTime': 2000, 'registerMoney': '3840', 'controlType': '企业法人', 'area': '山东', 'companyType': '有限责任公司' },
-                2932443:{ 'ID': 2932443, 'isZombie': '是', 'registerTime': 2014, 'registerMoney': '4600', 'controlType': '企业法人', 'area': '广西', 'companyType': '集体所有制企业' },
-                3356449:{ 'ID': 3356449, 'isZombie': '是', 'registerTime': 2009, 'registerMoney': '8760', 'controlType': '企业法人', 'area': '湖南', 'companyType': '农民专业合作社' },
-                5978041:{ 'ID': 5978041, 'isZombie': '否', 'registerTime': 2005, 'registerMoney': '3500', 'controlType': '企业法人', 'area': '山东', 'companyType': '有限责任公司' },
-                5978042:{ 'ID': 5978042, 'isZombie': '否', 'registerTime': 2003, 'registerMoney': '6490', 'controlType': '自然人', 'area': '湖北', 'companyType': '合伙企业' },
-                5978081:{ 'ID': 5978081, 'isZombie': '否', 'registerTime': 2010, 'registerMoney': '7080', 'controlType': '自然人', 'area': '福建', 'companyType': '有限责任公司' },
-                5978099:{ 'ID': 5978099, 'isZombie': '否', 'registerTime': 2012, 'registerMoney': '5120', 'controlType': '企业法人', 'area': '广东', 'companyType': '有限责任公司' },
-                5988104:{ 'ID': 5988104, 'isZombie': '否', 'registerTime': 2004, 'registerMoney': '1560', 'controlType': '企业法人', 'area': '湖北', 'companyType': '有限责任公司' },
+                1500001:{ '专利': 0, '商标': 0, '著作权': 0, 'ID': 1500001, 'isZombie': '是', 'registerTime': 2010, 'registerMoney': '6680', 'controlType': '自然人', 'area': '山东', 'companyType': '股份有限公司' },
+                1500321:{ '专利': 0, '商标': 0, '著作权': 0, 'ID': 1500321, 'isZombie': '是', 'registerTime': 2001, 'registerMoney': '9330', 'controlType': '企业法人', 'area': '广东', 'companyType': '股份有限公司' },
+                1507545:{ '专利': 1, '商标': 1, '著作权': 1, 'ID': 1507545, 'isZombie': '是', 'registerTime': 2000, 'registerMoney': '3840', 'controlType': '企业法人', 'area': '山东', 'companyType': '有限责任公司' },
+                2932443:{ '专利': 0, '商标': 0, '著作权': 1, 'ID': 2932443, 'isZombie': '是', 'registerTime': 2014, 'registerMoney': '4600', 'controlType': '企业法人', 'area': '广西', 'companyType': '集体所有制企业' },
+                3356449:{ '专利': 0, '商标': 1, '著作权': 1, 'ID': 3356449, 'isZombie': '是', 'registerTime': 2009, 'registerMoney': '8760', 'controlType': '企业法人', 'area': '湖南', 'companyType': '农民专业合作社' },
+                5978041:{ '专利': 1, '商标': 1, '著作权': 0, 'ID': 5978041, 'isZombie': '否', 'registerTime': 2005, 'registerMoney': '3500', 'controlType': '企业法人', 'area': '山东', 'companyType': '有限责任公司' },
+                5978042:{ '专利': 0, '商标': 0, '著作权': 0, 'ID': 5978042, 'isZombie': '否', 'registerTime': 2003, 'registerMoney': '6490', 'controlType': '自然人', 'area': '湖北', 'companyType': '合伙企业' },
+                5978081:{ '专利': 1, '商标': 0, '著作权': 1, 'ID': 5978081, 'isZombie': '否', 'registerTime': 2010, 'registerMoney': '7080', 'controlType': '自然人', 'area': '福建', 'companyType': '有限责任公司' },
+                5978099:{ '专利': 0, '商标': 0, '著作权': 0, 'ID': 5978099, 'isZombie': '否', 'registerTime': 2012, 'registerMoney': '5120', 'controlType': '企业法人', 'area': '广东', 'companyType': '有限责任公司' },
+                5988104:{ '专利': 0, '商标': 0, '著作权': 0, 'ID': 5988104, 'isZombie': '否', 'registerTime': 2004, 'registerMoney': '1560', 'controlType': '企业法人', 'area': '湖北', 'companyType': '有限责任公司' },
             },
             clusterData: {
                 1500001 : [[0.759936092486962, 2.037291155884674, 1.017753063736564]],
@@ -177,6 +184,54 @@ export default {
         },
         */
         initCharts() {
+            var myChart1 = this.$echarts.init(document.getElementById('demo1'), 'light');
+            var option1 = {
+                tooltip: {},
+                legend: {
+                data: ["当前企业"],
+                },
+                radar: {
+                center: ['50 %', '65 %'],
+                name: {
+                    textStyle: {
+                    fontSize: 12,
+                    // fontWeight: 'bold'
+                    }
+                },
+                indicator: [{
+                    text: '专利',
+                    max: 2,
+                    min: -0.5
+                },
+                {
+                    name: '商标',
+                    max: 2,
+                    min: -0.5
+
+                },
+                {
+                    name: '著作权',
+                    max: 2,
+                    min: -0.5
+
+                },
+                ]
+                },
+                series: [{
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data: [{
+                    value: [this.companyInfo[this.currentID]['专利'], this.companyInfo[this.currentID]['商标'], this.companyInfo[this.currentID]['著作权']],
+                    // value: [0, 0, 1],
+                    name: '当前企业',
+                    areaStyle: {
+                    },
+                },
+                ]
+                }]
+            };
+            myChart1.setOption(option1);
+
             var myChart3 = this.$echarts.init(document.getElementById('demo3'), 'light');
             var color = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
             var option3 = {

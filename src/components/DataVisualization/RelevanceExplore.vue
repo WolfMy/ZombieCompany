@@ -235,6 +235,7 @@ export default {
                     grid3D: {},
                     xAxis3D: {
                         name: "2015年纳税总额",
+                        nameGap: 35,
                         type: 'value',
                         axisPointer: {
                             show: false,
@@ -242,6 +243,7 @@ export default {
                     },
                     yAxis3D: {
                         name: "2016年纳税总额",
+                        nameGap: 35,
                         type: 'value',
                         axisPointer: {
                             show: false,
@@ -249,11 +251,11 @@ export default {
                     },
                     zAxis3D: {
                         name: "2017年纳税总额",
+                        nameGap: 35,
                         type: 'value',
                         axisPointer: {
                             show: false,
                         },
-
                     },
                     legend: {
                         textStyle: {
@@ -263,25 +265,24 @@ export default {
                         top: 2
                     },
                     series: [{
-                            type: 'scatter3D',
-                            symbolSize: 4,
-                            coordinateSystem: 'cartesian3D',
-                            name: "非僵尸企业",
-                            data: res.data[0],
-                            itemStyle: {
-                                color: '#60acfc'
-                            },
-
+                        type: 'scatter3D',
+                        symbolSize: 4,
+                        coordinateSystem: 'cartesian3D',
+                        name: "非僵尸企业",
+                        data: res.data[0],
+                        itemStyle: {
+                            color: '#60acfc'
                         },
-                        {
-                            type: 'scatter3D',
-                            symbolSize: 5,
-                            name: "僵尸企业",
-                            data: res.data[1],
-                            itemStyle: {
-                                color: '#ff7c7c'
-                            }
+                    },
+                    {
+                        type: 'scatter3D',
+                        symbolSize: 5,
+                        name: "僵尸企业",
+                        data: res.data[1],
+                        itemStyle: {
+                            color: '#ff7c7c'
                         }
+                    }
                     ]
                 };
                 myChart2.setOption(option2);

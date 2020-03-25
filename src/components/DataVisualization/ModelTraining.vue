@@ -35,7 +35,7 @@
                 </List>
             </Card>
         </Col>
-        <Col :md="10" :xs="24">
+        <Col :md="13" :xs="24">
             <Card dis-hover style="margin:16px 0px 0px;">
                 <h2 slot="title" style="text-align:left">
                     4-2 
@@ -43,7 +43,7 @@
                 <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
                     <Button size="small" type="info">说明</Button>
                 </Poptip>
-                <div id="demo2" style="height:400px;"></div>
+                <div id="demo5" style="height:400px;"></div>
             </Card>
         </Col>
     </Row>
@@ -54,7 +54,7 @@
         <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
             <Button size="small" type="info">说明</Button>
         </Poptip>
-        <div id="demo1" style="height:550px;"></div>
+        <div id="demo1" style="height:400px;"></div>
     </Card>
 </div>
 </template>
@@ -70,46 +70,63 @@ export default {
             var myChart1 = this.$echarts.init(document.getElementById('demo1'), "light");
             var option1 = {
                 color: ["#ff7c7c", "#5bc49f", "#feb64d", "#9287e7"],
+
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {
-                        type: 'shadow'
+                    type: 'shadow'
                     }
+
                 },
                 grid: {
                     right: '20%'
                 },
                 toolbox: {
                     feature: {
-                        restore: { show: true },
-                        magicType: { show: true, type: ['line', 'bar'] },
-                        saveAsImage: { show: true }
                     }
+
                 },
                 legend: {
-                    data: ['模型名称', 'Miss_count', 'Accuracy', 'F-measure', 'AUC'],
+                    data: ['模型名称', 'Miss_count', 'Accuracy', 'Precision', 'Recall', 'F-measure', 'AUC'],
                 },
-                xAxis: [{
+                xAxis: [
+                    {
                     type: 'category',
                     axisTick: {
                         alignWithLabel: true
                     },
-                    data: ['CatBoost', 'Bagging', 'Random Forest', 'AdaBoost', 'DTC', 'LightGBM', 'NN', 'XGBoost', 'LR', 'KNN', 'NB', 'LDA'],
-                }],
-                dataZoom: [{
+                    data: ['CatBoost',
+                        'Bagging',
+                        'AdaBoost',
+                        'Random Forest',
+                        'XGBoost',
+                        'DTC',
+                        'LightGBM',
+                        'NN',
+                        'LR',
+                        'KNN',
+                        'NB',
+                        'LDA',
+                    ],
+                    }
+                ],
+                dataZoom: [
+                    {
                     type: 'slider',
                     show: true,
                     xAxisIndex: 0,
                     start: 0,
                     end: 20,
                     handleSize: 2
-                },
-                {
+                    },
+                    {
                     type: 'inside',
                     start: 0,
                     end: 20
-                }],
-                yAxis: [{
+                    },
+                ],
+                yAxis: [
+                    {
                     type: 'value',
                     name: '分错个数',
                     min: 0,
@@ -124,8 +141,8 @@ export default {
                     axisLabel: {
                         formatter: '{value} 个'
                     }
-                },
-                {
+                    },
+                    {
                     type: 'value',
                     name: '准确率',
                     min: 0.999,
@@ -140,11 +157,13 @@ export default {
                         formatter: '{value}'
                     },
 
-                }],
-                series: [{
+                    },
+                ],
+                series: [
+                    {
                     name: 'Miss_count',
                     type: 'bar',
-                    data: [1, 3, 5, 5, 6, 10, 29, 98, 118, 710, 1163, 1939],
+                    data: [1, 3, 5, 5, 5, 6, 10, 29, 118, 710, 1163, 1939],
                     yAxisIndex: 0,
                     markPoint: {
                         data: [
@@ -152,62 +171,181 @@ export default {
                         { type: 'min', name: '最小值' }
                         ]
                     },
-                },
-                {
+                    },
+                    {
                     name: 'Accuracy',
                     type: 'bar',
                     yAxisIndex: 1,
-                    data: [0.999968, 0.999903, 0.999838, 0.999838, 0.999806, 0.999676, 0.999061, 0.996827, 0.996179, 0.977011, 0.962343, 0.937217],
-                },
-                {
-                    name: 'F-measure',
+                    data: [0.999968, 0.999903, 0.999838, 0.999838, 0.999838, 0.999806, 0.999676, 0.999061, 0.996179, 0.977011, 0.962343, 0.937217,
+                    ],
+
+                    },
+                    {
+                    name: 'Precision',
                     type: 'bar',
                     yAxisIndex: 1,
-                    data: [0.999977, 0.999834, 0.999723, 0.999723, 0.999668, 0.999533, 0.998393, 0.994542, 0.993498, 0.962097, 0.938689, 0.888863],
-                },
-                {
+                    data:
+                        [0.9999445, 0.999723, 0.9996675, 0.999866, 0.9998855, 0.9996675, 0.999734, 0.9985715, 0.9937265, 0.9637225, 0.944659, 0.9319155,
+                        ],
+                    },
+                    {
+                    name: 'Recall',
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    data: [0.999977, 0.9998855, 0.999863, 0.999899, 0.999723, 0.999863, 0.99971, 0.9987665, 0.997106, 0.9834365, 0.9695605, 0.9144065,
+                    ]
+                    },
+                    {
+                    name: 'F1-Score',
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    data:
+                        [0.999961, 0.99986, 0.999793, 0.999827, 0.9998045, 0.9997655, 0.9994725, 0.9988075, 0.9953965, 0.9727995, 0.9557575, 0.922557,
+                        ]
+                    },
+                    {
                     name: 'AUC',
                     type: 'bar',
                     yAxisIndex: 1,
-                    data: [0.999945, 0.999931, 0.999723, 0.999886, 0.999863, 0.999721, 0.998914, 0.997768, 0.997106, 0.983437, 0.969561, 0.914407],
-                }]
-            };
+                    data:
+                        [0.999977, 0.999931, 0.999886, 0.999723, 0.999723, 0.999863, 0.999721, 0.998914, 0.997106, 0.983437, 0.969561, 0.914407],
+                    }
+                ]
+                };
             myChart1.setOption(option1);
 
-            var myChart2 = this.$echarts.init(document.getElementById('demo2'), "light");
-            var option2 = {
-            tooltip: {},
-            xAxis: {
-                type: 'value',
-                data: [5000, 10000, 15000, 20000, 25000],
+            var myChart5 = this.$echarts.init(document.getElementById('demo5'), "light");
+            var color = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
+            var option5 = {
+                color: color,
+                toolbox: {
+                    show: true,
+                    feature: {
+                    mark: {
+                        show: true
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['pie', 'funnel']
+                    },
+                    }
+                },
 
-            },
-            legend: {
-
-            },
-            grid: {
-            },
-            yAxis: {
-                type: 'value',
-                min: 0.2,
-                max: 1.0
-            },
-            series: [{
-                name: "训练集",
-                data: [[2779, 0.99830874], [9033, 0.99227278], [15287, 0.99532936], [21541, 0.99661111], [27795, 0.99740601]],
-                type: 'line'
-            },
-            {
-                name: "测试集",
-                data: [[2779, 0.28908172], [9033, 0.99585544], [15287, 0.99663254], [21541, 0.99679443], [27795, 0.99689158]],
-                type: 'line',
-                itemStyle: {
-                color: '#ff7c7c'
-                }
-            }
-            ]
+                "title": {
+                    // "text": "南丁格尔玫瑰图--PieHalfRose",
+                    // "left": "center",
+                    // "top": 20,
+                    // "textStyle": {
+                    //   "color": "#ccc"
+                    // }
+                },
+                "series": [{
+                    "type": "pie",
+                    "radius": [
+                    30,
+                    220
+                    ],
+                    "avoidLabelOverlap": false,
+                    "startAngle": 0,
+                    "center": [
+                    "50%",
+                    "50%"
+                    ],
+                    "roseType": "area",
+                    "selectedMode": "single",
+                    "label": {
+                    "normal": {
+                        "show": true,
+                        "formatter": "{b}:{c}",
+                        fontSize: 13,
+                        fontWeight: 'bolder'
+                    },
+                    "emphasis": {
+                        "show": true
+                    }
+                    },
+                    "labelLine": {
+                    "normal": {
+                        "show": true,
+                        "smooth": false,
+                        "length": 12,
+                        "length2": 14,
+                        lineStyle: {
+                        width: 2
+                        }
+                    },
+                    "emphasis": {
+                        "show": true
+                    }
+                    },
+                    "data": [{
+                    "value": 94.6,
+                    "name": "2017-净利润",
+                    },
+                    {
+                    "value": 73.9,
+                    "name": "所属行业",
+                    },
+                    {
+                    "value": 62.9,
+                    "name": "2016-资产总额",
+                    },
+                    {
+                    "value": 53.8,
+                    "name": "2015-净利润",
+                    },
+                    {
+                    "value": 53.3,
+                    "name": "2016-净利润",
+                    },
+                    {
+                    "value": 19.0,
+                    "name": "控制人持股比例",
+                    },
+                    {
+                    "value": 18.9,
+                    "name": "2016-纳税总额",
+                    },
+                    {
+                    "value": 13.1,
+                    "name": "2017-债券融资额度",
+                    },
+                    {
+                    "value": 94.6,
+                    "name": "2017-净利润",
+                    },
+                    {
+                    "value": 73.9,
+                    "name": "所属行业",
+                    },
+                    {
+                    "value": 62.9,
+                    "name": "2016-资产总额",
+                    },
+                    {
+                    "value": 53.8,
+                    "name": "2015-净利润",
+                    },
+                    {
+                    "value": 53.3,
+                    "name": "2016-净利润",
+                    },
+                    {
+                    "value": 19.0,
+                    "name": "控制人持股比例",
+                    },
+                    {
+                    "value": 18.9,
+                    "name": "2016-纳税总额",
+                    },
+                    {
+                    "value": 13.1,
+                    "name": "2017-债券融资额度",
+                    }
+                ]
+            }]
             };
-            myChart2.setOption(option2);
+            myChart5.setOption(option5);
         }
     }
 }

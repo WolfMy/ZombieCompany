@@ -5,8 +5,7 @@
             <Card dis-hover style="margin:24px 0px;padding:24px 24px;">
                 <h1 class="title">ZomBoost</h1>
                 <h2>基于CatBoost的僵尸企业预测系统</h2>
-                <p class="lead text-muted">设计思路：从整体到局部，从分析到<strong>应用</strong>，针对不同人群</p>
-                <p class="lead text-muted">面向人群：校领导层、班主任、科任教师、家长、学生</p>
+                <p class="lead text-muted">设计思路：<strong>智能预测</strong>与<strong>可视化分析</strong>相辅相成</p>
                 <p class="lead text-muted">组件介绍：对于部分组件，提供组件<Button size="small" type="info">说明</Button>，详细介绍组件的设计理念和功能</p>
             </Card>
         </Col>

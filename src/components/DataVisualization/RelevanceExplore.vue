@@ -212,7 +212,7 @@ export default {
 
             myChart1.setOption(option1);
 
-            Axios.get("http://zomboost.dcts.top:5555/data/demo6.json").then((res)=>{
+            Axios.get("http://zomboost.dcts.top/data/demo6.json").then((res)=>{
                 var myChart2 = this.$echarts.init(document.getElementById('demo2'), "light");
                 var option2 = {
                     color: color,

@@ -15,7 +15,7 @@
                 <h2 slot="title" style="text-align:left;">
                     4-1 模型信息
                 </h2>
-                <List style="text-align:left;height:500px;">
+                <List style="text-align:left;height:350px;">
                     <ListItem>
                         <ListItemMeta title="模型名称" />
                         <template slot="extra">CatBoostClassifier</template>
@@ -35,23 +35,23 @@
                 </List>
             </Card>
         </Col>
-        <Col :md="13" :xs="24">
+        <Col :md="12" :xs="24">
             <Card dis-hover style="margin:16px 0px 0px;">
                 <h2 slot="title" style="text-align:left">
-                    4-2 
+                    4-2 强相关特征
                 </h2>
-                <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
+                <Poptip word-wrap width="300" slot="extra" content="通过南丁格尔玫瑰图，展示了由分类模型所自动筛选的与“是否是僵尸企业”强相关的特征。" placement="left">
                     <Button size="small" type="info">说明</Button>
                 </Poptip>
-                <div id="demo5" style="height:500px;"></div>
+                <div id="demo5" style="height:350px;"></div>
             </Card>
         </Col>
     </Row>
     <Card dis-hover :padding="16" style="margin:16px 0px;">
         <h2 slot="title" style="text-align:left">
-            4-3
+            4-3 模型评估与对比
         </h2>
-        <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
+        <Poptip word-wrap width="300" slot="extra" content="从预测错误数量（Miss_count）、准确率（Accuracy）、精确率（Precision）、召回率（Recall）、F1-Score、AUC六个层面，横向对比11个常见分类模型，综合评估模型的性能。" placement="left">
             <Button size="small" type="info">说明</Button>
         </Poptip>
         <div id="demo1" style="height:400px;"></div>
@@ -84,7 +84,7 @@ export default {
 
                 },
                 legend: {
-                    data: ['模型名称', 'Miss_count', 'Accuracy', 'Precision', 'Recall', 'F-measure', 'AUC'],
+                    data: ['Miss_count','Accuracy','Precision','Recall','F1-Score','AUC'],
                 },
                 xAxis: [
                     {
@@ -239,7 +239,7 @@ export default {
                     "type": "pie",
                     "radius": [
                     30,
-                    220
+                    120
                     ],
                     "avoidLabelOverlap": false,
                     "startAngle": 0,

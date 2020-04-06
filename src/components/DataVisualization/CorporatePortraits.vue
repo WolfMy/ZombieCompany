@@ -60,21 +60,31 @@
                 <h2 slot="title" style="text-align:left">
                     3-2 TSNE数据可视化
                 </h2>
-                <Poptip word-wrap width="300" slot="extra" content="描述说明" placement="left">
+                <Poptip word-wrap width="300" slot="extra" content="通过TSNE工具将高维数据降到三维后，用可视化的方式定性分析僵尸企业和非僵尸企业的分布情况。" placement="left">
                     <Button size="small" type="info">说明</Button>
                 </Poptip>
                 <div id="demo4" style="height:400px;"></div>
             </Card>
         </Col>
         <Col :md="{span:8,order:3}" :xs="{span:24,order:1}">
-            <Row>
+            <Row :gutter="0">
+                <Col :span="20">
                 <Input size="large" @on-search="searchID" search enter-button placeholder="请输入企业ID"  style="margin:16px 0px;" />
+                </Col>
+                <Col :span="4">
+                <Poptip word-wrap width="300" content="考虑系统性能，平台选取较有代表性样例展示，后期根据应用进行拓展。目前提供ID有：1500001、1500321、1507545、2932443、3356449、5978041、5978042、5978081、5978099、5988104。" placement="left" style="margin:16px 0px;">
+                    <Button size="large" type="success">说明</Button>
+                </Poptip>
+                </Col>
             </Row>
             <Row>
                 <Card dis-hover :padding="16">
                     <h2 slot="title" style="text-align:left">
-                        3-3 
+                        3-3 企业知识产权统计
                     </h2>
+                    <Poptip word-wrap width="300" slot="extra" content="统计了当前企业专利、商标、著作权的数量情况。" placement="left">
+                        <Button size="small" type="info">说明</Button>
+                    </Poptip>
                     <div id="demo1" style="height:345px;"></div>
                 </Card>
             </Row>
@@ -393,7 +403,7 @@ export default {
             };
             myChart3.setOption(option3);
             
-            Axios.get("http://120.27.192.52:5555/data/prediction.json").then((res)=>{
+            Axios.get("http://zomboost.dcts.top:5555/data/prediction.json").then((res)=>{
                 var myChart4 = this.$echarts.init(document.getElementById('demo4'), "light");
                 var option4 = {
                     color: ["#ff7c7c", "#5bc49f", "#feb64d", "#9287e7"],

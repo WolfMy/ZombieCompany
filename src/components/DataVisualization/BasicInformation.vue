@@ -485,3 +485,8 @@ export default {
     }
 }
 </script>
+<style>
+.ivu-card-bordered{
+    border-radius: .5em;
+}
+</style>

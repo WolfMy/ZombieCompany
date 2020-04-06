@@ -212,7 +212,7 @@ export default {
 
             myChart1.setOption(option1);
 
-            Axios.get("http://120.27.192.52:5555/data/demo6.json").then((res)=>{
+            Axios.get("http://zomboost.dcts.top:5555/data/demo6.json").then((res)=>{
                 var myChart2 = this.$echarts.init(document.getElementById('demo2'), "light");
                 var option2 = {
                     color: color,
@@ -465,29 +465,36 @@ export default {
                 tooltip: {},
                 color: color,
                 legend: {
-                    data: ['验证集僵尸', '验证集非僵尸', '训练集僵尸']
+                    selected: {
+                        '验证集僵尸企业': true, 
+                        '验证集非僵尸企业': false, 
+                        '训练集僵尸企业': false
+                    },
+                    data: ['验证集僵尸企业', '验证集非僵尸企业', '训练集僵尸企业']
                 },
                 radar: {
                     center: ['50 %', '60 %'],
                     indicator: [{
                             text: '有著作权',
-                            max: 40
+                            max: 45,
                         },
                         {
                             name: '有商标',
-                            max: 40
+                            max: 45,
+                            axisLabel:{show:true}
                         },
                         {
                             name: '有专利',
-                            max: 40
+                            max: 45
                         },
                         {
                             name: '三项中有一项',
-                            max: 40
+                            max: 15,
+                            axisLabel:{show:true}
                         },
                         {
                             name: '三项都有',
-                            max: 40
+                            max: 15
                         },
                     ]
                 },
@@ -497,19 +504,19 @@ export default {
                     // areaStyle: {normal: {}},
                     data: [{
                             value: [35.81, 36.1, 33.51, 7.91, 7.91],
-                            name: '验证集僵尸',
+                            name: '验证集僵尸企业',
                             areaStyle: {
                                 color: color[5],
                             },
                         },
                         {
                             value: [37.53, 36.2, 34.18, 8.38, 8.38],
-                            name: '验证集非僵尸',
+                            name: '验证集非僵尸企业',
                             areaStyle: {},
                         },
                         {
                             value: [36.41, 34.73, 34.06, 8.05, 8.05],
-                            name: '训练集僵尸',
+                            name: '训练集僵尸企业',
                             areaStyle: {},
                         }
                     ]
@@ -636,8 +643,8 @@ export default {
                 },
                 animation: false,
                 grid: {
-                    height: '60%',
-                    top: '10%'
+                    top: 10,
+                    bottom: '20%'
                 },
                 xAxis: {
                     type: 'category',
@@ -659,7 +666,7 @@ export default {
                     calculable: true,
                     orient: 'horizontal',
                     left: 'center',
-                    bottom: '10%',
+                    bottom: 5,
                     // inRange: {
                     //     color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196027']
                     // },

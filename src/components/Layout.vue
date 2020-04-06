@@ -3,6 +3,7 @@
         <Layout>
             <Header>
                 <img class="layout-logo" src="logo.png">
+                <!--p class="layout-logo-text">ZomBoost</p-->
                 <!--p style="color:#fff;position:fixed;left:7%;font-size=32px;">僵尸企业智能预测</p-->
                 <Menu v-show="isShow" class="layout-menu" theme="dark" mode="horizontal" style="text-align:left;">
                     <MenuItem name="0" to="/Home">
@@ -122,6 +123,13 @@
     position: relative;
     top: 15px;
     left: 20px;
+}
+.layout-logo-text {
+    font-family: Verdana;
+    color: #ffffff;
+    float: left;
+    position: relative;
+    left: 25px;
 }
 .layout-menu{
     float: right;

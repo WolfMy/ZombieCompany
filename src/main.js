@@ -4,8 +4,6 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import router from '@/router'
 import axios from 'axios'
-import './plugins/element.js'
-import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.use(ViewUI)

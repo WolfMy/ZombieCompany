@@ -403,7 +403,7 @@ export default {
             };
             myChart3.setOption(option3);
             
-            Axios.get("http://zomboost.dcts.top/data/prediction.json").then((res)=>{
+            Axios.get("http://cdn.zomboost.dcts.top/prediction.json").then((res)=>{
                 var myChart4 = this.$echarts.init(document.getElementById('demo4'), "light");
                 var option4 = {
                     color: ["#ff7c7c", "#5bc49f", "#feb64d", "#9287e7"],

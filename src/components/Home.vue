@@ -2,7 +2,7 @@
 <div class="home">
     <Row>
         <Col span="24">
-            <Card dis-hover style="margin:24px 0px;padding:48px 24px;background-image:url('background.png');background-repeat:no-repeat;background-position:center;">
+            <Card dis-hover style="margin:24px 0px;padding:12px 24px;background-image:url('http://cdn.zomboost.dcts.top/%E5%B0%81%E9%9D%A2%E5%9B%BE.png');background-repeat:no-repeat;background-position:center;">
                 <img src="ZomBoost.png"><br>
                 <img src="SubTitle.png">
                 <!--h1 class="title">ZomBoost</h1>
@@ -19,14 +19,14 @@
                 <Card style="text-align:left;">
                     <img src="http://cdn.zomboost.dcts.top/BatchQuery.png" slot="title" class="card-img-top">
                     <h3>僵尸企业智能预测</h3>
-                    <p>通过人工智能、机器学习、数据挖掘技术对企业多维度建模分析，上传企业相关数据即可实现对僵尸企业的高精度预测。</p>
+                    <p>通过人工智能、数据挖掘技术对企业多维度建模分析，上传企业相关数据即可实现对僵尸企业的高精度预测。</p>
                 </Card>
             </Row>
             <Row style="margin:16px 0px;">
                 <Card style="text-align:left;">
                     <img src="http://cdn.zomboost.dcts.top/BasicInformation.png" slot="title" class="card-img-top">
                     <h3>数据分布可视化</h3>
-                    <p>通过对数据基本信息进行可视化，我们可以直观的了解到数据中各个特征的分布情况，对数据的整体情况有了一个直观了解，这将会对我们之后对数据进行预处理和建模提供重要依据。</p>
+                    <p>通过对数据基本信息进行可视化，可以直观了解数据中各个特征的分布情况，从而为数据预处理和建模提供重要依据。</p>
                 </Card>
             </Row>
         </Col>
@@ -34,7 +34,7 @@
             <Card style="text-align:left;">
                 <img src="http://cdn.zomboost.dcts.top/RelevanceExplore.png" slot="title" class="card-img-top">
                 <h3>数据关联性探索</h3>
-                <p>关联性探索将通过数据可视化的方式，直观地去了解数据中各个特征之间的关系，其主要目的是挖掘“各个特征”与“是否是僵尸企业（flag）”这一特征之间的关系，从而挖掘和探索出对能否成为僵尸企业这一判断起到重要作用的特征。</p>
+                <p>通过数据可视化的方式，直观呈现数据中各个特征之间的关系，从而挖掘和探索与僵尸企业关联度最高的重要特征。</p>
             </Card> 
         </Col>
         <Col :xs="24" :md="7">
@@ -42,7 +42,7 @@
                 <Card style="text-align:left;">
                     <img src="http://cdn.zomboost.dcts.top/CorporatePortraits.png" slot="title" class="card-img-top">
                     <h3>僵尸企业画像</h3>
-                    <p>通过输入企业ID，展示当前企业基本信息。此外，我们获取了十五个与判断是否是僵尸企业起到关键作用的特征，并可视化当前企业与其他企业的数据分布情况。</p>
+                    <p>通过输入企业ID，展示当前企业是否为僵尸企业。对企业的基本信息及十五个用于判断是否为僵尸企业的重要特征进行可视化呈现，从而对企业进行全息画像。</p>
                 </Card>
             </Row>
             <Row style="margin:16px 0px;">

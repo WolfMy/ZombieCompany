@@ -2,11 +2,14 @@
 <div class="home">
     <Row>
         <Col span="24">
-            <Card dis-hover style="margin:24px 0px;padding:24px 24px;">
-                <h1 class="title">ZomBoost</h1>
+            <Card dis-hover style="margin:24px 0px;padding:48px 24px;background-image:url('background.png');background-repeat:no-repeat;background-position:center;">
+                <img src="ZomBoost.png"><br>
+                <img src="SubTitle.png">
+                <!--h1 class="title">ZomBoost</h1>
                 <h2>基于CatBoost的僵尸企业预测系统</h2>
+                <br>
                 <p class="lead text-muted">设计思路：<strong>智能预测</strong>与<strong>可视化分析</strong>相辅相成</p>
-                <p class="lead text-muted">组件介绍：对于部分组件，提供组件<Button size="small" type="info">说明</Button>，详细介绍组件的设计理念和功能</p>
+                <p class="lead text-muted">组件介绍：对于部分组件，提供组件<Button size="small" type="info">说明</Button>，详细介绍组件的设计理念和功能</p-->
             </Card>
         </Col>
     </Row>
@@ -55,7 +58,6 @@
 </div>
 </template>
 <script>
-
 export default {
     mounted(){
         
@@ -71,7 +73,7 @@ h1 {
 h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem!important;
-    color: #626567;
+    color: #424949;
 }
 h3 {
     margin-bottom: 0.5rem!important;
@@ -80,10 +82,10 @@ p {
     color: #797D7F;
 }
 .lead {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
     font-size: 1.25rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 .card-img-top {
     width: 100%;

@@ -115,13 +115,13 @@
     overflow: hidden;
 }
 .layout-logo{
-    width: 33px;
-    height: 33px;
+    width: 45px;
+    height: 45px;
     background: #5b6270;
     border-radius: 3px;
     float: left;
     position: relative;
-    top: 15px;
+    top: 15%;
     left: 20px;
 }
 .layout-logo-text {

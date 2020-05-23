@@ -3,7 +3,7 @@
 <Breadcrumb style="text-align:left;margin:5px 0px 10px 10px">
     <BreadcrumbItem>
         <Icon type="ios-ionitron" />
-        僵尸企业智能检测
+        僵尸企业智能识别
     </BreadcrumbItem>
 </Breadcrumb>
 <Card dis-hover>
@@ -134,7 +134,7 @@ export default {
                                 type: 'dot',
                                 color: params.row['PredictState']==1 ? 'success' : params.row['PredictState']==0 ? 'warning' : 'error'
                             }
-                        }, params.row['PredictState']==1 ? '预测成功': params.row['PredictState']==0 ? '预测中...': '文件错误')
+                        }, params.row['PredictState']==1 ? '识别成功': params.row['PredictState']==0 ? '识别中...': '文件错误')
                     }
                 },
                 {

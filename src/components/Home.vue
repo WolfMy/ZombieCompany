@@ -6,9 +6,9 @@
                 <img src="ZomBoost.png"><br>
                 <img src="SubTitle.png">
                 <!--h1 class="title">ZomBoost</h1>
-                <h2>基于CatBoost的僵尸企业预测系统</h2>
+                <h2>基于CatBoost的僵尸企业识别系统</h2>
                 <br>
-                <p class="lead text-muted">设计思路：<strong>智能预测</strong>与<strong>可视化分析</strong>相辅相成</p>
+                <p class="lead text-muted">设计思路：<strong>智能识别</strong>与<strong>可视化分析</strong>相辅相成</p>
                 <p class="lead text-muted">组件介绍：对于部分组件，提供组件<Button size="small" type="info">说明</Button>，详细介绍组件的设计理念和功能</p-->
             </Card>
         </Col>
@@ -18,8 +18,8 @@
             <Row>
                 <Card style="text-align:left;">
                     <img src="http://cdn.zomboost.dcts.top/BatchQuery.png" slot="title" class="card-img-top">
-                    <h3>僵尸企业智能预测</h3>
-                    <p>通过人工智能、数据挖掘技术对企业多维度建模分析，上传企业相关数据即可实现对僵尸企业的高精度预测。</p>
+                    <h3>僵尸企业智能识别</h3>
+                    <p>通过人工智能、数据挖掘技术对企业多维度建模分析，上传企业相关数据即可实现对僵尸企业的高精度识别。</p>
                 </Card>
             </Row>
             <Row style="margin:16px 0px;">

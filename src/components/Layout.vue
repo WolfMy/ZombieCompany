@@ -4,7 +4,7 @@
             <Header>
                 <img class="layout-logo" src="logo.png">
                 <!--p class="layout-logo-text">ZomBoost</p-->
-                <!--p style="color:#fff;position:fixed;left:7%;font-size=32px;">僵尸企业智能预测</p-->
+                <!--p style="color:#fff;position:fixed;left:7%;font-size=32px;">僵尸企业智能识别</p-->
                 <Menu v-show="isShow" class="layout-menu" theme="dark" mode="horizontal" style="text-align:left;">
                     <MenuItem name="0" to="/Home">
                         <Icon type="ios-home" />
@@ -12,7 +12,7 @@
                     </MenuItem>
                     <MenuItem name="1-1"  to="/BatchQuery">
                         <Icon type="ios-ionitron" />
-                        僵尸企业智能预测
+                        僵尸企业智能识别
                     </MenuItem>
                     <Submenu name="DataVisualization">
                         <template slot="title">
@@ -54,7 +54,7 @@
                         <MenuGroup title="系统菜单">
                             <MenuItem name="1-1"  to="/BatchQuery">
                                 <Icon type="ios-ionitron" />
-                                僵尸企业智能预测
+                                僵尸企业智能识别
                             </MenuItem>
                         </MenuGroup>
                         <MenuGroup title="数据可视化展示">

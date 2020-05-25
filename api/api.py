@@ -27,74 +27,12 @@ migrate = Migrate(app, db)
 
 UPLOAD_PATH = os.path.join(os.path.dirname(__file__),'upload')
 
-class Company(db.Model):
-    ID = db.Column(db.String(10), primary_key=True)
-    RegistrationTime = db.Column(db.String(4))
-    RegistrationCapital = db.Column(db.SmallInteger)
-    Industry = db.Column(db.String(10))
-    District = db.Column(db.String(5))
-    Type = db.Column(db.String(10))
-    Ucsp = db.Column(db.String(5))  # 控制人类型
-    ControllingPersonID = db.Column(db.String(10))
-
-    def __init__(self, ID, RegistrationTime, RegistrationCapital, Industry, District, Type, Ucsp, ControllingPersonID):
-        self.ID = ID
-        self.RegistrationTime = RegistrationTime
-        self.RegistrationCapital = RegistrationCapital
-        self.Industry = Industry
-        self.District = District
-        self.Type = Type
-        self.Ucsp = Ucsp
-        self.ControllingPersonID = ControllingPersonID
-
 class BatchRecord(db.Model):
     ID = db.Column(db.Integer, autoincrement=True, primary_key=True)
     CreatTime = db.Column(db.DateTime, nullable=False, default=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     FilePath = db.Column(db.String(20), nullable=False)
-    PredictState = db.Column(db.Integer, nullable=False, default=0) # 0:预测中  1:预测成功  2:错误
+    PredictState = db.Column(db.Integer, nullable=False, default=0) # 0:识别中  1:识别成功  2:错误
 
-'''这2个接口为单次查询API，废弃
-@app.route('/SingleInput', methods=['POST'])
-def SingleInput():
-    data = request.get_json()
-    print(data)
-    ID = data['ID']
-    if not Company.query.filter_by(ID=ID).all():
-        RegistrationTime = data['RegistrationTime']
-        RegistrationCapital = data['RegistrationCapital']
-        Industry = data['Industry']
-        District = data['District']
-        Type = data['Type']
-        Ucsp = data['Ucsp']
-        ControllingPersonID = data['ControllingPersonID']
-        try:
-            company = Company(ID, RegistrationTime, RegistrationCapital, Industry, District, Type, Ucsp, ControllingPersonID)
-            db.session.add(company)
-            db.session.commit()
-            return '保存成功！'
-        except:
-            return '出现错误，请重试！'
-    else:
-        return '此公司ID已存在！'
-
-@app.route('/getCompanyInfo', methods=['GET'])
-def getCompanyInfo():
-    Companys = Company.query.order_by(Company.ID).all()
-    companys_list = []
-    for a in Companys:
-        company = {}
-        company['ID'] = a.ID
-        company['RegistrationTime'] = a.RegistrationTime
-        company['RegistrationCapital'] = a.RegistrationCapital
-        company['Industry'] = a.Industry
-        company['District'] = a.District
-        company['Type'] = a.Type
-        company['Ucsp'] = a.Ucsp
-        company['ControllingPersonID'] = a.ControllingPersonID
-        companys_list.append(company)
-    #print(companys_list)
-    return json.dumps(companys_list)
-'''
 '''使用线程池回调函数，解决了预测完成后的数据库预测状态更新的问题
 def updatePredictState():
     #print('开始执行定时任务')

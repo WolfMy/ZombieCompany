@@ -22,7 +22,7 @@
 
 ## 三、功能简介
 
-在浏览器中输入网址(http://zomboost.dcts.top)进入图1所示项目首页。
+在浏览器中输入网址 <http://zomboost.dcts.top/> 进入图1所示项目首页。
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE1%20%E9%A1%B9%E7%9B%AE%E9%A6%96%E9%A1%B5.png)
 

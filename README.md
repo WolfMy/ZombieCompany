@@ -24,9 +24,14 @@
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE1%20%E9%A1%B9%E7%9B%AE%E9%A6%96%E9%A1%B5.png)
 
+<p style="text-align:center;">图1 项目首页</p>
+
 如图2所示，项目提供僵尸企业智能识别平台，并使用可视化技术展示数据的分布与关联性。此外还根据可视化结果定性识别僵尸企业，构建企业画像。最后将模型训练结果可视化，横向对比十余个常用模型，多指标综合评估模型性能。
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE2%20%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B.png)
+
+<p style="text-align:center;">图2 功能简介</p>
+
 
 
 ## 四、实现方案
@@ -41,9 +46,13 @@
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE3%20DeepFM%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84%E5%9B%BE.png)
 
+<p style="text-align:center;">图3 DeepFM模型结构图</p>
+
 其次，**选用CatBoost模型**，通过十折交叉验证和混淆矩阵综合评估模型的表现后，对验证集提供的所有数据集进行训练，并保存训练好的模型。此外，从准确率、精准率、召回率、AUC、F1-score多指标对比与其他经典模型之间的差异，并可视化对比结果。
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE4%20%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%8F%8A%E5%BB%BA%E6%A8%A1%E6%B5%81%E7%A8%8B.png)
+
+<p style="text-align:center;">图4 数据预处理及建模流程</p>
 
 
 **3、** **数据可视化**
@@ -54,15 +63,25 @@
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE5%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B5%E9%9D%A2.png)
 
+<p style="text-align:center;">图5 数据可视化页面</p>
+
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE6%20%E6%95%B0%E6%8D%AE%E5%85%B3%E8%81%94%E6%80%A7%E6%8E%A2%E7%B4%A2%E9%A1%B5%E9%9D%A2.png)
+
+<p style="text-align:center;">图6 数据关联性探索页面</p>
 
 **僵尸企业画像**（图7）通过输入企业ID，构建企业画像，并回答了如下两个问题：该企业是否是僵尸企业？在数据分布上如何做出上述判断？
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE7%20%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E7%94%BB%E5%83%8F.png)
 
+<p style="text-align:center;">图7 僵尸企业画像</p>
+
 **模型训练可视化**（图8）的目的其一，是直观展示分类模型自动挑选的若干个与“是否是僵尸企业”强相关的特征，其二，是将本项目模型与其他模型进行对比，并将对比结果可视化。
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/%E5%9B%BE8%20%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B5%E9%9D%A2.png)
+
+<p style="text-align:center;">图8 模型训练可视化页面</p>
+
+
 
 
 ## 五、开发工具与技术
@@ -71,16 +90,22 @@
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/5.1%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8F%8A%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF.png)
 
+
+
 2、数据建模工具
 
 ![image](https://github.com/WolfMy/ZombieCompany/blob/master/image/5.2%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7.png)
 
 
+
+
+
 ## 六、应用对象
 
 1. 作为**市场监督局和工商管理局**等政府机构的僵尸企业智能识别平台，对僵尸企业进行客观、精确、快速的识别；
-
 2. 帮助**企业管理者**评估企业当前经营状况，辅助企业进行资源优化、经营调整等。
+
+
 
 
 ## 七、结束语
